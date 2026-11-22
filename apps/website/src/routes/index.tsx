@@ -97,7 +97,7 @@ function Home() {
               text="A VST3 plugin for any DAW that loads VST3 effects."
             />
             <div className="mx-auto max-w-3xl">
-              <Downloads />
+              <Downloads centered />
             </div>
           </section>
 

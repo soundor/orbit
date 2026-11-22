@@ -9,11 +9,20 @@ import {
   repository,
 } from '../release';
 
-/** The released zips, one card per platform, with where each goes. */
-export function Downloads() {
+/**
+ * The released zips, one card per platform, with where each goes. `centered`
+ * centers the notes, as under the landing page's centered heading; the docs
+ * keep them aligned with their text.
+ */
+export function Downloads({
+  centered = false,
+}: {
+  readonly centered?: boolean;
+}) {
+  const align = centered ? 'text-center' : '';
   if (!released) {
     return (
-      <p className="text-fd-muted-foreground">
+      <p className={`text-fd-muted-foreground ${align}`}>
         Orbit has no release yet. Build it from{' '}
         <a className="underline" href={repository}>
           the source
@@ -41,7 +50,7 @@ export function Downloads() {
           />
         ))}
       </Cards>
-      <p className="mt-4 text-sm text-fd-muted-foreground">
+      <p className={`mt-4 text-sm text-fd-muted-foreground ${align}`}>
         macOS isn’t available yet. Check a download against{' '}
         <a className="underline" href={checksums}>
           its checksum

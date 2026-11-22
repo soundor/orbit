@@ -15,12 +15,22 @@ name: Release
 #                   so nothing is added after
 #   website         deploy orbit.soundor.dev from the tag (website.yml)
 #
-# A failed run leaves the draft unpublished; rerun its failed jobs.
+# A failed run leaves the draft unpublished; rerun its failed jobs. A run
+# that never got past release-please finishes by hand from main, for the
+# draft's tag (Actions → Release → Run workflow, or
+# `gh workflow run release.yml -f tag=vX.Y.Z`); it refuses a release that is
+# already published, since published releases cannot take assets.
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The tag of a draft release to finish, such as v1.2.3
+        type: string
+        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -36,11 +46,14 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+    # The action names a package's outputs after its path, apps/plugin--…;
+    # unprefixed ones exist only for a package at the root.
     outputs:
-      created: ${{ steps.release.outputs.release_created }}
-      tag: ${{ steps.release.outputs.tag_name }}
+      created: ${{ steps.release.outputs['apps/plugin--release_created'] || steps.draft.outputs.created }}
+      tag: ${{ steps.release.outputs['apps/plugin--tag_name'] || steps.draft.outputs.tag }}
     steps:
       - id: release
+        if: github.event_name == 'push'
         uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         with:
           # A pull request GITHUB_TOKEN opens starts no workflows, so Verify
@@ -48,6 +61,21 @@ jobs:
           token: ${{ secrets.RELEASE_PR_TOKEN || github.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+      - id: draft
+        name: Find the draft release
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          draft=$(gh release view "$TAG" --json isDraft --jq .isDraft)
+          if [ "$draft" != true ]; then
+            echo "::error::$TAG is published already; a published release cannot change"
+            exit 1
+          fi
+          echo "created=true" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
 
   check:
     name: Check

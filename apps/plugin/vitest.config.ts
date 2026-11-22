@@ -19,9 +19,11 @@ export default defineConfig({
           },
         },
       },
+      // The Debug VST3 in the VST3 host, its editor open: `pnpm test:vst3`
+      // builds it first.
       {
         plugins: [e2e({ vst3: '.soundor/debug/vst3/Soundor Orbit.vst3' })],
-        test: { name: 'e2e', include: ['e2e/**/*.test.ts'] },
+        test: { name: 'vst3', include: ['e2e/vst3/**/*.test.ts'] },
       },
     ],
   },

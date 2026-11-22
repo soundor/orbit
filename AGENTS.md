@@ -26,7 +26,8 @@ https://soundor.dev/docs; the UI uses `@soundor/components` and
 pnpm install
 pnpm check            # format + lint + typecheck + UI tests + Rust tests + site: what CI runs
 pnpm --filter orbit exec vitest run --project integration src/App.test.tsx -t "<name>"
-xvfb-run -a pnpm test:e2e   # the Debug VST3 in Soundor's VST3 host
+pnpm test:e2e         # the web build in Chromium (apps/plugin/e2e/web, Playwright)
+xvfb-run -a pnpm test:vst3  # the Debug VST3 in Soundor's VST3 host (apps/plugin/e2e/vst3)
 pnpm build:vst3       # release VST3 → apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
 pnpm build:web        # → apps/plugin/.soundor/dist/web
 pnpm website          # the site, with the web build at /embed/
@@ -48,5 +49,6 @@ pnpm format:fix
 - Built plugins are released only by `.github/workflows/release.yml`.
 - `turbo.json`: every plugin task depends on `gen`, which writes
   `.soundor/generated` once so tasks after it never race on it; the site's
-  `build` and `dev` depend on `orbit#build:web`. CI calls the VST3 build and
-  e2e tests through `pnpm --filter orbit`, outside turbo's strict environment.
+  `build` and `dev` depend on `orbit#build:web`, and so does `test:e2e`. CI
+  calls the VST3 build and its tests through `pnpm --filter orbit`, outside
+  turbo's strict environment.

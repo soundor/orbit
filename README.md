@@ -77,13 +77,16 @@ pnpm install
 pnpm dev:web        # in the browser
 pnpm dev            # the VST3 in Soundor's VST3 host
 pnpm check          # format, lint, types, UI tests, Rust tests, the site: what CI runs
-pnpm test:e2e       # the Debug VST3 in the VST3 host (xvfb-run -a without a display)
+pnpm test:e2e       # the web build in Chromium (Playwright)
+pnpm test:vst3      # the Debug VST3 in the VST3 host (xvfb-run -a without a display)
 pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
 pnpm website        # orbit.soundor.dev, with the live player
 ```
 
-`apps/plugin/e2e/` tests the built VST3 in the real VST3 host, UI and audio together, with
-[`@soundor/vitest-e2e`](https://soundor.dev/docs/testing/e2e).
+End-to-end tests run the built plugin: `apps/plugin/e2e/web/` the web build in Chromium, with
+[Playwright](https://playwright.dev), and `apps/plugin/e2e/vst3/` the Debug VST3 in the real VST3
+host, UI and audio together, with [`@soundor/vitest-e2e`](https://soundor.dev/docs/testing/e2e).
+The first Playwright run needs its Chromium: `pnpm --filter orbit exec playwright install chromium`.
 
 ## Versions and releases
 

@@ -21,8 +21,14 @@
       "dependsOn": ["gen"],
       "outputs": [".soundor/dist/vst3/**"]
     },
-    // The Debug VST3 in the VST3 host, with a display.
+    // The web build in Chromium (Playwright).
     "test:e2e": {
+      "dependsOn": ["build:web"],
+      "passThroughEnv": ["CI", "PLAYWRIGHT_BROWSERS_PATH"],
+      "cache": false
+    },
+    // The Debug VST3 in the VST3 host, with a display.
+    "test:vst3": {
       "dependsOn": ["gen"],
       "passThroughEnv": ["CI", "DISPLAY", "XAUTHORITY"],
       "cache": false

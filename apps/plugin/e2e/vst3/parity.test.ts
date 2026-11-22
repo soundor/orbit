@@ -13,16 +13,18 @@ import { launchHost, noise } from '@soundor/vitest-e2e';
 import { WASM_STATUS, WasmProcessor } from '@soundor/web-runtime/processor';
 import { beforeAll, expect, test } from 'vitest';
 
-import manifest from '../.soundor/generated/runtimes/web/manifest.json' with { type: 'json' };
+import manifest from '../../.soundor/generated/runtimes/web/manifest.json' with { type: 'json' };
 
-const ROOT = fileURLToPath(new URL('..', import.meta.url));
+const ROOT = fileURLToPath(new URL('../..', import.meta.url));
 
 /** The parameters' mappings, compiled by `gen` from the same expressions as
     the plugin's C++: from a normalized value to the plain one the processor
     reads. */
 const { behaviors } = (await import(
-  new URL('../.soundor/generated/runtimes/web/parameters.js', import.meta.url)
-    .href
+  new URL(
+    '../../.soundor/generated/runtimes/web/parameters.js',
+    import.meta.url,
+  ).href
 )) as {
   behaviors: { toValue(normalized: number): number }[];
 };

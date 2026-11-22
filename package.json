@@ -14,6 +14,7 @@
     "test": "turbo run test",
     "test:e2e": "turbo run test:e2e",
     "test:rust": "turbo run test:rust",
+    "test:vst3": "turbo run test:vst3",
     "typecheck": "turbo run typecheck",
     "website": "turbo run dev --filter=orbit-website"
   },

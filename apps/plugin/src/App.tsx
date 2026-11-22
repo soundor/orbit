@@ -25,7 +25,7 @@ import { state } from 'soundor:state';
 
 import { EchoField } from './EchoField';
 import { HelpGuide } from './HelpGuide';
-import { PoweredBy } from './PoweredBy';
+import { Logo } from './Logo';
 
 const compare: readonly SegmentOption<'original' | 'processed'>[] = [
   {
@@ -128,16 +128,7 @@ export function App() {
           justifyContent: 'space-between',
         }}
       >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: theme.spacing.spaceMd,
-          }}
-        >
-          <Text style={textStyle(theme, 'display')}>Orbit</Text>
-          <PoweredBy />
-        </View>
+        <Logo />
         <View
           style={{
             flexDirection: 'row',

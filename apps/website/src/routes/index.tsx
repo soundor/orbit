@@ -59,10 +59,9 @@ function Home() {
               <ArrowRight aria-hidden className="size-3" />
             </a>
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
-              Soundor Orbit,{' '}
-              <span className="bg-gradient-to-r from-fd-primary to-fd-foreground/60 bg-clip-text text-transparent">
-                a three-voice stereo delay
-              </span>
+              Soundor Orbit, a{' '}
+              <span className="whitespace-nowrap">three-voice</span> stereo
+              delay
             </h1>
             <p className="mt-5 max-w-xl text-lg text-balance text-fd-muted-foreground">
               Drag three echoes in time and level, hold them in a loop, and hear

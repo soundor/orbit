@@ -24,7 +24,7 @@ export const Route = createFileRoute('/docs/$')({
   },
   head: ({ loaderData }) => ({
     meta: loaderData && [
-      { title: `${loaderData.title} | Orbit` },
+      { title: `${loaderData.title} | Soundor Orbit` },
       { name: 'description', content: loaderData.description },
     ],
   }),

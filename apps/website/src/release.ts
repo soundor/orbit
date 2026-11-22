@@ -18,13 +18,13 @@ export const platforms = [
   {
     name: 'Linux',
     arch: 'x86_64',
-    file: `Orbit-${version}-linux-x86_64.zip`,
+    file: `Soundor-Orbit-${version}-linux-x86_64.zip`,
     folder: '~/.vst3',
   },
   {
     name: 'Windows',
     arch: 'x64',
-    file: `Orbit-${version}-windows-x64.zip`,
+    file: `Soundor-Orbit-${version}-windows-x64.zip`,
     folder: 'C:\\Program Files\\Common Files\\VST3',
   },
 ].map((platform) => ({ ...platform, url: `${download}/${platform.file}` }));

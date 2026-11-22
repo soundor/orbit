@@ -16,11 +16,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Orbit: a three-voice stereo delay' },
+      { title: 'Soundor Orbit: a three-voice stereo delay' },
       {
         name: 'description',
         content:
-          'Orbit is a free three-voice stereo delay for Linux and Windows. Try it in your browser, then download the VST3.',
+          'Soundor Orbit is a free three-voice stereo delay for Linux and Windows. Try it in your browser, then download the VST3.',
       },
     ],
     links: [

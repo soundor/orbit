@@ -59,7 +59,7 @@ function Home() {
               <ArrowRight aria-hidden className="size-3" />
             </a>
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
-              Orbit,{' '}
+              Soundor Orbit,{' '}
               <span className="bg-gradient-to-r from-fd-primary to-fd-foreground/60 bg-clip-text text-transparent">
                 a three-voice stereo delay
               </span>
@@ -110,7 +110,7 @@ function Home() {
           <section id="download" className="scroll-mt-20 pb-24">
             <Heading
               eyebrow="Download"
-              title={released ? `Orbit ${version}` : 'Orbit'}
+              title={released ? `Soundor Orbit ${version}` : 'Soundor Orbit'}
               text="A VST3 plugin for any DAW that loads VST3 effects."
             />
             <div className="mx-auto max-w-3xl">

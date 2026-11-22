@@ -124,14 +124,14 @@ jobs:
       - name: Checksums
         working-directory: ${{ runner.temp }}/release
         run: |
-          sha256sum Orbit-*.zip > SHA256SUMS
+          sha256sum Soundor-Orbit-*.zip > SHA256SUMS
           cat SHA256SUMS
       - uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
         with:
           subject-checksums: ${{ runner.temp }}/release/SHA256SUMS
       - name: Upload to the draft release
         working-directory: ${{ runner.temp }}/release
-        run: gh release upload "$TAG" Orbit-*.zip SHA256SUMS --clobber
+        run: gh release upload "$TAG" Soundor-Orbit-*.zip SHA256SUMS --clobber
       - name: Publish the release
         run: gh release edit "$TAG" --draft=false --latest
 

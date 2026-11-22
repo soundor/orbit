@@ -1,4 +1,4 @@
-# Orbit
+# Soundor Orbit
 
 A playable three-voice stereo delay, built with
 [Soundor](https://soundor.dev). One React interface runs in a VST3 plugin and
@@ -13,7 +13,7 @@ parameters; the handles and controls remain usable with a Canvas 2D fallback.
 
 Download the zip for your platform from
 [the latest release](https://github.com/soundor/orbit/releases/latest) and
-unzip `Orbit.vst3` into your VST3 folder: `~/.vst3` on Linux,
+unzip `Soundor Orbit.vst3` into your VST3 folder: `~/.vst3` on Linux,
 `C:\Program Files\Common Files\VST3` on Windows. Then rescan plugins in your
 DAW. `SHA256SUMS` in the release lists each zip's checksum, and
 `gh attestation verify <zip> --repo soundor/orbit` checks that this
@@ -71,7 +71,7 @@ pnpm dev:web        # in the browser
 pnpm dev            # the VST3 in Soundor's VST3 host
 pnpm check          # format, lint, types, UI tests, Rust tests, the site: what CI runs
 pnpm test:e2e       # the Debug VST3 in the VST3 host (xvfb-run -a without a display)
-pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Orbit.vst3
+pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
 pnpm website        # orbit.soundor.dev, with the live player
 ```
 

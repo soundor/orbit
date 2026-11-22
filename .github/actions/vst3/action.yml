@@ -1,7 +1,8 @@
 name: Build and pack the VST3
 description: >
   Build Orbit's release VST3 for this runner's platform and zip it as a
-  release names it: Orbit-<version>-<platform>.zip, the bundle at its root.
+  release names it: Soundor-Orbit-<version>-<platform>.zip, the bundle
+  (Soundor Orbit.vst3) at its root.
 
 inputs:
   platform:
@@ -23,11 +24,11 @@ runs:
         PLATFORM: ${{ inputs.platform }}
       run: |
         version=$(node -p "require('./apps/plugin/package.json').version")
-        zip="$RUNNER_TEMP/Orbit-$version-$PLATFORM.zip"
+        zip="$RUNNER_TEMP/Soundor-Orbit-$version-$PLATFORM.zip"
         cd apps/plugin/.soundor/dist/vst3
         if [[ "$RUNNER_OS" == Windows ]]; then
-          7z a -tzip "$(cygpath -w "$zip")" Orbit.vst3 > /dev/null
+          7z a -tzip "$(cygpath -w "$zip")" "Soundor Orbit.vst3" > /dev/null
         else
-          zip -qr "$zip" Orbit.vst3
+          zip -qr "$zip" "Soundor Orbit.vst3"
         fi
         echo "zip=$zip" >> "$GITHUB_OUTPUT"

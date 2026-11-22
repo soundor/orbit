@@ -27,7 +27,7 @@ pnpm install
 pnpm check            # format + lint + typecheck + UI tests + Rust tests + site: what CI runs
 pnpm --filter orbit exec vitest run --project integration src/App.test.tsx -t "<name>"
 xvfb-run -a pnpm test:e2e   # the Debug VST3 in Soundor's VST3 host
-pnpm build:vst3       # release VST3 → apps/plugin/.soundor/dist/vst3/Orbit.vst3
+pnpm build:vst3       # release VST3 → apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
 pnpm build:web        # → apps/plugin/.soundor/dist/web
 pnpm website          # the site, with the web build at /embed/
 pnpm format:fix

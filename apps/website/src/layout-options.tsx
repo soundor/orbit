@@ -7,7 +7,7 @@ export const layoutOptions = {
     title: (
       <span className="inline-flex items-center gap-2 font-semibold">
         <img src="/favicon.svg" alt="" width={24} height={24} />
-        Orbit
+        Soundor Orbit
       </span>
     ),
   },

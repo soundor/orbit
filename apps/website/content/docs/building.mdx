@@ -16,7 +16,7 @@ for the VST3.
 
 ```sh
 pnpm install
-pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Orbit.vst3
+pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
 pnpm dev            # the VST3 in Soundor's VST3 host, reloading as you edit
 pnpm dev:web        # the same in your browser
 pnpm check          # what CI runs: formatting, lint, types and tests
@@ -42,5 +42,5 @@ by the repository's release workflow, which attaches the zips, their
 
 ```sh
 sha256sum --check --ignore-missing SHA256SUMS
-gh attestation verify Orbit-<version>-linux-x86_64.zip --repo soundor/orbit
+gh attestation verify Soundor-Orbit-<version>-linux-x86_64.zip --repo soundor/orbit
 ```

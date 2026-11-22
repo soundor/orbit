@@ -9,7 +9,8 @@ export default defineSoundorConfig({
     // Never changes: VST3 hosts know the plugin by the class IDs derived
     // from it, so another ID would be another plugin to every saved session.
     id: 'dev.soundor.orbit',
-    name: 'Orbit',
+    // What hosts list and the bundle is named: Soundor Orbit.vst3.
+    name: 'Soundor Orbit',
     // release-please bumps package.json; the plugin reports that version.
     version: manifest.version,
     vendor: { name: 'Soundor', website: 'https://orbit.soundor.dev' },

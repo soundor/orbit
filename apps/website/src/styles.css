@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+.release-breaking {
+  display: inline-block;
+  margin-inline-start: 0.4em;
+  color: #b45309;
+  vertical-align: -0.1em;
+}
+
+.dark .release-breaking {
+  color: #fcd34d;
+}

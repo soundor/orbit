@@ -1,0 +1,66 @@
+---
+title: Controls
+description: The echo map, the knobs, Hold, and comparing with the original.
+---
+
+## The echo map
+
+Each colored dot is one echo. Its position is the echo's time (left to
+right) and its level (bottom to top), and the curves around it show how its
+repeats fade.
+
+- Drag a dot sideways to change its time, up or down to change its level.
+  Past the map's edge, it stays at the edge until the pointer comes back.
+- Tab to a dot, then use the left and right arrows for time and the up and
+  down arrows for level.
+
+Each echo can be from 1/32 of a note to three beats late.
+
+### Sync and Free
+
+**Sync**, at the bottom left, ties the times to your song's tempo: dragging
+snaps to 1/32 notes, and the labels read as note values such as 1/8 D (a
+dotted eighth). Click it to switch to **Free**, where a beat on the map is
+500 ms whatever the tempo, and the times move freely.
+
+## Knobs
+
+| Knob     | What it does                                                                                           |
+| -------- | ------------------------------------------------------------------------------------------------------ |
+| Feedback | How much of each echo returns into it: from a single repeat to long tails (up to 92%).                 |
+| Tone     | How bright the repeats are, from dark (400 Hz) to open (12 kHz). Each repeat darkens more.             |
+| Motion   | Drift in the repeats' pitch and timing, as tape does.                                                  |
+| Spread   | How wide the echoes are: at full spread, the first is left, the second in the middle, the third right. |
+| Mix      | The balance between your sound and the echoes.                                                         |
+
+Drag a knob up or down, scroll over it, or use the arrow keys; hold Shift for
+finer steps. Double-click a knob, or press Home, to reset it.
+
+The echoes come from a mono sum of the input and are spread in stereo; your
+original sound keeps its own stereo image.
+
+## Hold
+
+**Hold** catches what the three echoes are carrying and loops it. New sound
+doesn't enter the loops while Hold is on, but your original keeps playing
+over them, and Tone, Spread and Mix still shape them. Moving an echo while
+held changes its loop's speed, and its pitch with it. Feedback is ignored
+until you release Hold.
+
+## Original and Orbit
+
+The **Original** and **Orbit** buttons at the top right compare your dry
+sound with the effect, with a short fade and without changing any settings.
+The echoes keep running while you listen to the original.
+
+## Presets
+
+The arrows beside the preset name step through [the four presets](/docs/presets).
+An asterisk after the name means you've changed something since loading it.
+
+## Resizing
+
+Drag the plugin window's corner to make Orbit bigger or smaller: it zooms
+rather than rearranging, from half to twice its size.
+
+Press **?** at the bottom right for a short guide to the controls.

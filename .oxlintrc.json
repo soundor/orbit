@@ -1,0 +1,10 @@
+{
+  "ignorePatterns": [
+    "**/.soundor/**",
+    "**/.source/**",
+    "**/content/docs/changelog.mdx",
+    "**/public/embed/**",
+    "**/routeTree.gen.ts"
+  ],
+  "plugins": ["react", "typescript"]
+}

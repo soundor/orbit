@@ -1,0 +1,54 @@
+{
+  "$schema": "https://turborepo.dev/schema.json",
+  "globalPassThroughEnv": ["RUSTUP_HOME", "CARGO_HOME", "SOUNDOR_CACHE"],
+  "tasks": {
+    // Every plugin task reads .soundor/generated, which gen writes (only the
+    // files that changed): tasks after it find nothing to write, so they
+    // never race on it.
+    "gen": { "cache": false },
+    "typecheck": { "dependsOn": ["gen"] },
+    "test": { "dependsOn": ["gen"] },
+    "test:rust": { "dependsOn": ["gen"] },
+    "build": {
+      "dependsOn": ["gen"],
+      "outputs": [".soundor/dist/**"]
+    },
+    "build:web": {
+      "dependsOn": ["gen"],
+      "outputs": [".soundor/dist/web/**"]
+    },
+    "build:vst3": {
+      "dependsOn": ["gen"],
+      "outputs": [".soundor/dist/vst3/**"]
+    },
+    // The web build in Chromium (Playwright).
+    "test:e2e": {
+      "dependsOn": ["build:web"],
+      "passThroughEnv": ["CI", "PLAYWRIGHT_BROWSERS_PATH"],
+      "cache": false
+    },
+    // The Debug VST3 in the VST3 host, with a display.
+    "test:vst3": {
+      "dependsOn": ["gen"],
+      "passThroughEnv": ["CI", "DISPLAY", "XAUTHORITY"],
+      "cache": false
+    },
+    "dev": { "dependsOn": ["gen"], "cache": false, "persistent": true },
+    "dev:web": { "dependsOn": ["gen"], "cache": false, "persistent": true },
+    // The site copies the plugin's web build into /embed/.
+    "orbit-website#build": {
+      "dependsOn": ["orbit#build:web"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "../plugin/CHANGELOG.md",
+        "../plugin/package.json"
+      ],
+      "outputs": ["dist/**"]
+    },
+    "orbit-website#dev": {
+      "dependsOn": ["orbit#build:web"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

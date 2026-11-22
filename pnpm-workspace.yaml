@@ -1,0 +1,38 @@
+packages:
+  - apps/*
+
+engineStrict: true
+# Two days: a release that is pulled soon after publishing never gets here.
+minimumReleaseAge: 2880
+# The Soundor 0.19 release and the component libraries built on it are what
+# Orbit targets; they are trusted from their publishing day.
+minimumReleaseAgeExclude:
+  - '@soundor/components@0.3.0'
+  - '@soundor/config@0.19.0'
+  - '@soundor/core@0.19.0'
+  - '@soundor/devtools-client@0.19.0'
+  - '@soundor/devtools-protocol@0.19.0'
+  - '@soundor/devtools-server@0.19.0'
+  - '@soundor/driver@0.19.0'
+  - '@soundor/engine@0.10.0'
+  - '@soundor/environment@0.19.0'
+  - '@soundor/expression@0.19.0'
+  - '@soundor/icons@0.1.0'
+  - '@soundor/react@0.19.0'
+  - '@soundor/runtime-sdk@0.19.0'
+  - '@soundor/test-runtime@0.19.0'
+  - '@soundor/testing-library@0.19.0'
+  - '@soundor/vitest@0.19.0'
+  - '@soundor/vitest-e2e@0.19.0'
+  - '@soundor/vst3-host@0.2.1'
+  - '@soundor/vst3-host-darwin-universal@0.2.1'
+  - '@soundor/vst3-host-linux-x64-gnu@0.2.1'
+  - '@soundor/vst3-host-win32-x64@0.2.1'
+  - '@soundor/vst3-runtime@0.1.0'
+  - '@soundor/web-runtime@0.15.0'
+  - 'soundor@0.19.0'
+  - 'vitest-environment-soundor@0.19.0'
+autoInstallPeers: false
+strictPeerDependencies: true
+allowBuilds:
+  esbuild: false

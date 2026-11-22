@@ -1,0 +1,34 @@
+name: Build and pack the VST3
+description: >
+  Build Orbit's release VST3 for this runner's platform and zip it as a
+  release names it: Soundor-Orbit-<version>-<platform>.zip, the bundle
+  (Soundor Orbit.vst3) at its root.
+
+inputs:
+  platform:
+    description: linux-x86_64 or windows-x64
+    required: true
+outputs:
+  zip:
+    description: The zip's path
+    value: ${{ steps.pack.outputs.zip }}
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: pnpm --filter orbit build:vst3
+    - id: pack
+      shell: bash
+      env:
+        PLATFORM: ${{ inputs.platform }}
+      run: |
+        version=$(node -p "require('./apps/plugin/package.json').version")
+        zip="$RUNNER_TEMP/Soundor-Orbit-$version-$PLATFORM.zip"
+        cd apps/plugin/.soundor/dist/vst3
+        if [[ "$RUNNER_OS" == Windows ]]; then
+          7z a -tzip "$(cygpath -w "$zip")" "Soundor Orbit.vst3" > /dev/null
+        else
+          zip -qr "$zip" "Soundor Orbit.vst3"
+        fi
+        echo "zip=$zip" >> "$GITHUB_OUTPUT"

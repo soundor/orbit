@@ -1,0 +1,46 @@
+---
+title: Build from source
+description: Build Orbit yourself, and how its versions and releases work.
+---
+
+Orbit is built with [Soundor](https://soundor.dev): its interface is React,
+its audio processing Rust, and the Soundor CLI turns them into a VST3 plugin
+and a web app. The source is at
+[github.com/soundor/orbit](https://github.com/soundor/orbit).
+
+## Build
+
+You need Node 24 with corepack (for pnpm), stable Rust, and
+[Soundor's native prerequisites](https://soundor.dev/docs/vst3-runtime#requirements)
+for the VST3.
+
+```sh
+pnpm install
+pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
+pnpm dev            # the VST3 in Soundor's VST3 host, reloading as you edit
+pnpm dev:web        # the same in your browser
+pnpm check          # what CI runs: formatting, lint, types and tests
+```
+
+## Versions
+
+Orbit's versions say whether what you've saved still works:
+
+- **Major** (2.0.0): a session or preset saved with an earlier version may not
+  open as it was. Before 1.0, these are minor releases (0.2.0).
+- **Minor** (1.1.0): new controls, presets or features.
+- **Patch** (1.0.1): fixes, and updates to what Orbit is built with.
+
+Your DAW knows Orbit by an ID that never changes, so a new version replaces
+the old one in your sessions.
+
+## Releases
+
+Every release on [GitHub](https://github.com/soundor/orbit/releases) is built
+by the repository's release workflow, which attaches the zips, their
+`SHA256SUMS`, and a record of how they were built. To check a download:
+
+```sh
+sha256sum --check --ignore-missing SHA256SUMS
+gh attestation verify Soundor-Orbit-<version>-linux-x86_64.zip --repo soundor/orbit
+```

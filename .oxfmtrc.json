@@ -1,0 +1,15 @@
+{
+  "printWidth": 80,
+  "semi": true,
+  "singleQuote": true,
+  "sortImports": true,
+  "sortPackageJson": true,
+  "ignorePatterns": [
+    "**/.soundor/**",
+    "**/.source/**",
+    "**/CHANGELOG.md",
+    "**/content/docs/changelog.mdx",
+    "**/public/embed/**",
+    "**/routeTree.gen.ts"
+  ]
+}

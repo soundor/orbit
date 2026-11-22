@@ -1,0 +1,30 @@
+{
+  "name": "orbit-workspace",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "build:vst3": "turbo run build:vst3",
+    "build:web": "turbo run build:web",
+    "check": "pnpm format && pnpm lint && turbo run typecheck test test:rust && turbo run build --filter=orbit-website",
+    "dev": "turbo run dev --filter=orbit",
+    "dev:web": "turbo run dev:web --filter=orbit",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt",
+    "lint": "oxlint --deny-warnings .",
+    "test": "turbo run test",
+    "test:e2e": "turbo run test:e2e",
+    "test:rust": "turbo run test:rust",
+    "test:vst3": "turbo run test:vst3",
+    "typecheck": "turbo run typecheck",
+    "website": "turbo run dev --filter=orbit-website"
+  },
+  "devDependencies": {
+    "oxfmt": "0.79.0",
+    "oxlint": "1.92.0",
+    "turbo": "2.11.12"
+  },
+  "engines": {
+    "node": "^24.0.0"
+  },
+  "packageManager": "pnpm@12.15.0"
+}

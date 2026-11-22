@@ -53,7 +53,7 @@ function Echo({
   const theme = useTheme();
   const voice = voices[index]!;
   const c = theme.color;
-  const color = bypass ? c.displayMuted : c[voice];
+  const color = bypass ? c.displayMuted : voice.color;
   const timeParameter = times[index]!;
   const name = timeParameter.info.label;
   const format = (value: number) =>
@@ -113,11 +113,7 @@ function Echo({
         <Text
           accessible={false}
           style={[
-            textStyle(
-              theme,
-              'value',
-              bypass ? c.displayText : c[`${voice}Foreground`],
-            ),
+            textStyle(theme, 'value', bypass ? c.displayText : voice.ink),
             { fontWeight: 'bold' },
           ]}
         >
@@ -258,8 +254,8 @@ export function EchoField({ bpm, playing }: { bpm: number; playing: boolean }) {
             backgroundColor: bypass
               ? c.displayMuted
               : hold
-                ? c.lime
-                : c.lavender,
+                ? voices[1].color
+                : voices[0].color,
           }}
         />
         <Text style={textStyle(theme, 'section', c.displayText)}>

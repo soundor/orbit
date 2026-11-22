@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/brand/soundor-orbit-logo-on-dark.svg">
+    <img src="assets/brand/soundor-orbit-logo.svg" alt="Soundor Orbit" height="64">
+  </picture>
+</p>
+
 # Soundor Orbit
 
 A playable three-voice stereo delay, built with

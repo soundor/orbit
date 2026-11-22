@@ -1,48 +1,22 @@
-import { textStyle, useTheme } from '@soundor/components/theme';
-import { Text, View } from '@soundor/react';
-import { Circle, Rect, Svg } from '@soundor/react/svg';
+import { Image } from '@soundor/react';
 
-/**
- * Orbit's icon, as the website's favicon (apps/website/public/favicon.svg):
- * the three echoes, each later, smaller and in its voice's color.
- */
-function OrbitIcon({ size }: { readonly size: number }) {
-  return (
-    <Svg
-      width={size}
-      height={size}
-      viewBox="0 0 32 32"
-      accessible={false}
-      style={{ pointerEvents: 'none' }}
-    >
-      <Rect width={32} height={32} rx={7} fill="#10121a" />
-      <Circle cx={9} cy={13} r={4} fill="#b7a3ff" />
-      <Circle cx={17} cy={17} r={3.2} fill="#c3e879" />
-      <Circle cx={24} cy={20} r={2.4} fill="#f09f87" />
-    </Svg>
-  );
-}
+// The repository's brand file (assets/brand), which the README and the
+// website show too: the icon and the Soundor Orbit wordmark, for light
+// backgrounds such as the editor's panel.
+import logo from '../../../assets/brand/soundor-orbit-logo.svg';
 
-/** The header's wordmark: the icon, then Soundor Orbit. */
+/** The logo's own proportions: its viewBox is 338.1 × 120. */
+const HEIGHT = 40;
+const WIDTH = (HEIGHT * 338.1) / 120;
+
+/** The header's logo: the icon and Soundor Orbit. */
 export function Logo() {
-  const theme = useTheme();
-  const display = textStyle(theme, 'display');
   return (
-    <View
-      accessible
+    <Image
+      source={logo}
       accessibilityRole="header"
       accessibilityLabel="Soundor Orbit"
-      style={{
-        flexDirection: 'row',
-        alignItems: 'center',
-        gap: theme.spacing.spaceMd,
-      }}
-    >
-      <OrbitIcon size={30} />
-      <View style={{ flexDirection: 'row', gap: 6 }}>
-        <Text style={[display, { color: theme.color.textMuted }]}>Soundor</Text>
-        <Text style={display}>Orbit</Text>
-      </View>
-    </View>
+      style={{ width: WIDTH, height: HEIGHT, resizeMode: 'contain' }}
+    />
   );
 }

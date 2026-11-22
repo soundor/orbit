@@ -5,7 +5,7 @@ import type { UiNode } from 'soundor:ui';
 import { echoFieldY, voices } from './model';
 
 const colors = defaultTheme.color;
-const palette = voices.map((voice) => colors[voice]);
+const palette = voices.map((voice) => voice.color);
 const gridViewport = {
   left: 24,
   top: 38,

@@ -1,6 +1,15 @@
 import { parameters } from 'soundor:parameters';
 
-export const voices = ['lavender', 'lime', 'coral'] as const;
+/**
+ * The three voices' colors, the logo's (assets/brand): counting from its
+ * center, orange on the inner orbit, then lime and purple on the outer one,
+ * as the echoes go from the shortest to the longest.
+ */
+export const voices = [
+  { color: '#ff8f4d', ink: '#10121a' },
+  { color: '#c4ec6f', ink: '#10121a' },
+  { color: '#b8a3ff', ink: '#10121a' },
+] as const;
 
 // The renderer and the interactive handles share this vertical scale.
 export const echoFieldY = { height: 244, baseline: 202, levelTravel: 133 };

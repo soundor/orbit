@@ -22,10 +22,18 @@ export const Route = createRootRoute({
         content:
           'Soundor Orbit is a free three-voice stereo delay for Linux and Windows. Try it in your browser, then download the VST3.',
       },
+      { property: 'og:title', content: 'Soundor Orbit' },
+      {
+        property: 'og:image',
+        content: 'https://orbit.soundor.dev/social-preview.png',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
     ],
     links: [
       { rel: 'stylesheet', href: styles },
-      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+      { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' },
+      { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
     ],
   }),
   component: Root,

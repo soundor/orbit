@@ -14,7 +14,9 @@ TanStack Start, prerendered for GitHub Pages): the landing page
 (`src/routes/index.tsx`), the user docs in `content/docs/` (keep them in sync
 when behaviour changes), the changelog page written from
 `apps/plugin/CHANGELOG.md` by `scripts/changelog.ts`, and `/embed/`, the
-web build itself, for iframes. Soundor's own docs are at
+web build itself, which the landing page and the Soundor websites put in an
+iframe. Embedding is not a public feature: don't document or advertise it.
+Soundor's own docs are at
 https://soundor.dev/docs; the UI uses `@soundor/components` and
 `@soundor/icons`.
 

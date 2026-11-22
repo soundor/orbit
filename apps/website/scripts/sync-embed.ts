@@ -2,7 +2,8 @@
  * Copies Orbit's web build (`apps/plugin/.soundor/dist/web`) into the site's
  * `public/embed/`: orbit.soundor.dev/embed/ is that build itself, whose demo
  * presentation fills any frame (the plugin scaled to fit, Play and the audio
- * source under it). The landing page embeds it, and other sites can.
+ * source under it). The landing page embeds it, and so do the Soundor
+ * websites; it is not a public feature.
  * Turborepo builds it first (`orbit#build:web`).
  */
 

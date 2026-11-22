@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { Card, Cards } from 'fumadocs-ui/components/card';
-import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 import { buttonVariants } from 'fumadocs-ui/components/ui/button';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import {
@@ -20,13 +19,6 @@ import { layoutOptions } from '../layout-options';
 import { released, version } from '../release';
 
 export const Route = createFileRoute('/')({ component: Home });
-
-const embedCode = `<iframe
-  src="https://orbit.soundor.dev/embed/"
-  title="Orbit, a three-voice stereo delay"
-  allow="autoplay; microphone"
-  width="800" height="640"
-></iframe>`;
 
 function Home() {
   return (
@@ -170,28 +162,6 @@ function Home() {
                 description="React for the interface, Rust for the sound, built with Soundor. MIT licensed."
               />
             </Cards>
-          </section>
-
-          <section className="grid gap-10 pb-28 lg:grid-cols-[2fr_3fr] lg:items-center">
-            <Heading
-              align="left"
-              eyebrow="Embed"
-              title="Put Orbit on your page"
-              text="The player above works in any page. Give the frame room for the plugin and the bar under it; Orbit scales to fit."
-            />
-            <CodeBlock title="index.html" className="my-0">
-              <Pre>
-                {/* Each line in its own span, as the code block lays out
-                    highlighted code. */}
-                <code>
-                  {embedCode.split('\n').map((line, index) => (
-                    <span key={index} className="line">
-                      {line}
-                    </span>
-                  ))}
-                </code>
-              </Pre>
-            </CodeBlock>
           </section>
 
           <section className="mb-24 overflow-hidden rounded-2xl border bg-fd-card p-8 text-center sm:p-12">

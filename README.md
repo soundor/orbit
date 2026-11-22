@@ -61,7 +61,7 @@ compensation or oversampling.
 The repository is a pnpm workspace run by Turborepo: `apps/plugin` is the
 plugin (package `orbit`), `apps/website` the site (Fumadocs on TanStack
 Start: the landing page, the docs, the changelog from
-`apps/plugin/CHANGELOG.md`, and `/embed/`). You need Node 24, pnpm
+`apps/plugin/CHANGELOG.md`, and the live player). You need Node 24, pnpm
 (through corepack) and stable Rust; the VST3 build also needs
 [Soundor's native prerequisites](https://soundor.dev/docs/vst3-runtime#requirements).
 
@@ -72,26 +72,11 @@ pnpm dev            # the VST3 in Soundor's VST3 host
 pnpm check          # format, lint, types, UI tests, Rust tests, the site: what CI runs
 pnpm test:e2e       # the Debug VST3 in the VST3 host (xvfb-run -a without a display)
 pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Orbit.vst3
-pnpm website        # orbit.soundor.dev, with /embed/
+pnpm website        # orbit.soundor.dev, with the live player
 ```
 
 `apps/plugin/e2e/` tests the built VST3 in the real VST3 host, UI and audio together, with
 [`@soundor/vitest-e2e`](https://soundor.dev/docs/testing/e2e).
-
-## Embed
-
-[orbit.soundor.dev/embed/](https://orbit.soundor.dev/embed/) is Orbit's web
-build alone, scaled to fit its frame, with Play and the audio source under it:
-
-```html
-<iframe
-  src="https://orbit.soundor.dev/embed/"
-  title="Orbit, a three-voice stereo delay"
-  allow="autoplay; microphone"
-  width="800"
-  height="640"
-></iframe>
-```
 
 ## Versions and releases
 

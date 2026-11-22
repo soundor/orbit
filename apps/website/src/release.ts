@@ -16,12 +16,14 @@ const download = `${repository}/releases/download/v${version}`;
 /** The platforms a release carries, as the release workflow names them. */
 export const platforms = [
   {
+    id: 'linux',
     name: 'Linux',
     arch: 'x86_64',
     file: `Soundor-Orbit-${version}-linux-x86_64.zip`,
     folder: '~/.vst3',
   },
   {
+    id: 'windows',
     name: 'Windows',
     arch: 'x64',
     file: `Soundor-Orbit-${version}-windows-x64.zip`,

@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 
 import { Downloads } from '../components/downloads';
+import { HeroActions } from '../components/hero-actions';
 import { Player } from '../components/player';
 import { layoutOptions } from '../layout-options';
 import { released, version } from '../release';
@@ -68,31 +69,14 @@ function Home() {
               them answer in the gaps. Free for Linux and Windows, and playable
               right here.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
-              <a
-                className={buttonVariants({
-                  variant: 'primary',
-                  className: 'gap-1.5 px-4 py-2.5',
-                })}
-                href="#download"
-              >
-                {released ? `Download ${version}` : 'Download'}
-                <ArrowRight aria-hidden className="size-4" />
-              </a>
-              <Link
-                className={buttonVariants({
-                  variant: 'outline',
-                  className: 'px-4 py-2.5',
-                })}
-                to="/docs/$"
-                params={{ _splat: '' }}
-              >
-                Read the docs
-              </Link>
-            </div>
+            <HeroActions />
           </section>
 
-          <section aria-labelledby="live" className="pb-24">
+          <section
+            id="play"
+            aria-labelledby="live"
+            className="scroll-mt-20 pb-24"
+          >
             <div className="mx-auto max-w-[960px] rounded-xl shadow-2xl shadow-black/10 dark:shadow-black/40">
               <Player />
             </div>

@@ -10,7 +10,7 @@ export function Player({ className }: { readonly className?: string }) {
       src="/embed/index.html"
       title="Orbit, playable in the browser"
       allow="autoplay; microphone"
-      className={`orbit-player ${className ?? ''}`}
+      className={`block aspect-[8/7] max-h-[80vh] w-full rounded-xl border bg-black ${className ?? ''}`}
     />
   );
 }

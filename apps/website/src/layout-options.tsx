@@ -5,15 +5,15 @@ import { repository } from './release';
 export const layoutOptions = {
   nav: {
     title: (
-      <span className="orbit-nav-title">
-        <img src="/favicon.svg" alt="" width={22} height={22} />
+      <span className="inline-flex items-center gap-2 font-semibold">
+        <img src="/favicon.svg" alt="" width={24} height={24} />
         Orbit
       </span>
     ),
   },
   githubUrl: repository,
   links: [
-    { text: 'Docs', url: '/docs' },
     { text: 'Changelog', url: '/docs/changelog' },
+    { text: 'Soundor', url: 'https://soundor.dev/', external: true },
   ],
 } satisfies BaseLayoutProps;

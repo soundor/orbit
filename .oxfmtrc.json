@@ -7,6 +7,7 @@
   "ignorePatterns": [
     "**/.soundor/**",
     "**/.source/**",
+    ".release-please-manifest.json",
     "**/CHANGELOG.md",
     "**/content/docs/changelog.mdx",
     "**/public/embed/**",

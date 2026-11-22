@@ -1,3 +1,4 @@
+import { createCoordinates, viewport } from '@soundor/components/chart';
 import { parameters } from 'soundor:parameters';
 
 /**
@@ -11,8 +12,30 @@ export const voices = [
   { color: '#b8a3ff', ink: '#10121a' },
 ] as const;
 
+/** The echo map's size, in the 800×600 Orbit is laid out at. */
+export const echoField = { width: 752, height: 332 };
+
 // The renderer and the interactive handles share this vertical scale.
 export const echoFieldY = { height: 244, baseline: 202, levelTravel: 133 };
+
+/**
+ * The echo map's axes: time in beats across (0 to 3), level up (0 to 1),
+ * where the handles sit and the beat labels are.
+ */
+export const echoCoordinates = createCoordinates(
+  viewport(echoField.width, echoField.height, {
+    left: 46,
+    right: 46,
+    top:
+      ((echoFieldY.baseline - echoFieldY.levelTravel) * echoField.height) /
+      echoFieldY.height,
+    bottom:
+      ((echoFieldY.height - echoFieldY.baseline) * echoField.height) /
+      echoFieldY.height,
+  }),
+  { domain: [0, 3] },
+  { domain: [0, 1] },
+);
 
 export const times = [
   parameters.time1,

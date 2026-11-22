@@ -11,7 +11,7 @@ import { presets } from 'soundor:presets';
 import { state } from 'soundor:state';
 import { expect, test } from 'vitest';
 
-import { App } from './App';
+import { App } from './app';
 
 test('presets set the real parameters, release Hold, and survive host automation', async () => {
   await render(<App />);

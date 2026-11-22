@@ -1,0 +1,66 @@
+name: Verify
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Format, lint, types, the UI's tests on the simulated runtime, the crate's
+  # tests, and the site with its web build.
+  check:
+    name: Check
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+      - run: pnpm check
+      - run: pnpm --filter orbit-website build
+
+  # The release build on each platform a release carries, as the release
+  # workflow makes it; Linux also runs the Debug VST3 in Soundor's VST3 host
+  # under Xvfb (e2e/). Nothing built leaves the runner.
+  vst3:
+    name: VST3 (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x86_64, os: ubuntu-24.04 }
+          - { platform: windows-x64, os: windows-2025 }
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ./.github/actions/setup
+      - uses: ./.github/actions/vst3
+        with:
+          platform: ${{ matrix.platform }}
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install -y --no-install-recommends xvfb
+      - if: runner.os == 'Linux'
+        run: xvfb-run -a -s "-screen 0 1920x1200x24" pnpm test:e2e
+
+  # The one check to require in branch protection: it passes only when every
+  # job above passed, so new jobs need no settings change, only this list.
+  verify:
+    name: Verify
+    if: always()
+    needs: [check, vst3]
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Every job passed
+        env:
+          RESULTS: ${{ toJSON(needs.*.result) }}
+        run: |
+          echo "$RESULTS"
+          jq -e 'all(. == "success")' <<< "$RESULTS"

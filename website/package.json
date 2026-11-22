@@ -1,0 +1,15 @@
+{
+  "name": "orbit-website",
+  "private": true,
+  "description": "orbit.soundor.dev: Orbit in the browser, its downloads, and /embed/, the page other sites put in an iframe.",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --dir .. build:web && vite build",
+    "dev": "pnpm --dir .. build:web && vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "vite": "8.3.6"
+  }
+}

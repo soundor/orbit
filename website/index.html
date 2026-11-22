@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orbit: a three-voice stereo delay</title>
+    <meta
+      name="description"
+      content="Orbit is a free three-voice stereo delay for Linux and Windows. Try it in your browser, then download the VST3."
+    />
+    <meta name="theme-color" content="#e7e8e0" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="bar">
+      <nav aria-label="Site">
+        <a href="#download">Download</a>
+        <a href="#embed">Embed</a>
+        <a href="https://github.com/soundor/orbit">Source</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="title">
+        <h1 id="title" class="wordmark">
+          Orbit<span class="echo echo-1" aria-hidden="true">Orbit</span
+          ><span class="echo echo-2" aria-hidden="true">Orbit</span
+          ><span class="echo echo-3" aria-hidden="true">Orbit</span>
+        </h1>
+        <p class="lede">
+          A three-voice stereo delay. Press Play, drag an echo to move it in
+          time, and listen for it answering in the gaps.
+        </p>
+      </section>
+
+      <figure class="stage">
+        <iframe
+          src="/embed/"
+          title="Orbit, playable in the browser"
+          allow="autoplay; microphone"
+        ></iframe>
+        <figcaption>
+          Play starts the demo phrase. The settings button beside it switches to
+          your microphone, an audio file or an oscillator.
+        </figcaption>
+      </figure>
+
+      <section id="download" class="section" aria-labelledby="download-title">
+        <h2 id="download-title">Download Orbit %ORBIT_VERSION%</h2>
+        <!-- downloads -->
+      </section>
+
+      <section class="section features" aria-labelledby="features-title">
+        <h2 id="features-title">What it does</h2>
+        <div class="feature">
+          <h3>Three echoes you can see</h3>
+          <p>
+            Each repeat is a dot on the echo map. Drag it sideways for timing,
+            up or down for level. Sync snaps the times to your song’s tempo;
+            Free lets them land anywhere.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Hold catches a moment</h3>
+          <p>
+            Hold loops whatever the echoes carry right now. Your playing goes on
+            over it, and moving an echo while held bends the loop’s speed.
+          </p>
+        </div>
+        <div class="feature">
+          <h3>Original or Orbit</h3>
+          <p>
+            Switch between the dry sound and the effect without losing your
+            settings. Four presets give you somewhere to start.
+          </p>
+        </div>
+      </section>
+
+      <section id="embed" class="section" aria-labelledby="embed-title">
+        <h2 id="embed-title">Put Orbit on your page</h2>
+        <p>
+          The player above works in any page. Give the frame room for the plugin
+          and the bar under it; Orbit scales to fit.
+        </p>
+        <pre><code>&lt;iframe
+  src="https://orbit.soundor.dev/embed/"
+  title="Orbit, a three-voice stereo delay"
+  allow="autoplay; microphone"
+  width="800" height="640"
+&gt;&lt;/iframe&gt;</code></pre>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Orbit is open source under the MIT license, and built with
+        <a href="https://soundor.dev">Soundor</a>: one React interface that runs
+        as a VST3 plugin and in the browser.
+        <a href="https://github.com/soundor/orbit/blob/main/CHANGELOG.md"
+          >Read the changelog</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>

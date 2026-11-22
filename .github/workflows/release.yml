@@ -1,0 +1,146 @@
+name: Release
+
+# Releases Orbit with release-please. Conventional commits on main keep a
+# release pull request open with the next version (package.json, which the
+# plugin reports) and CHANGELOG.md. Merging it runs, from the merge:
+#
+#   release-please  tag vX.Y.Z and create its GitHub release as a draft
+#   check           format, lint, types and tests of the tagged commit
+#   build           the release VST3 per platform, zipped; Linux also runs
+#                   the Debug VST3 in the VST3 host
+#   publish         upload the zips, SHA256SUMS and their provenance to the
+#                   draft, then publish it: published releases are immutable,
+#                   so nothing is added after
+#   website         deploy orbit.soundor.dev from the tag (website.yml)
+#
+# A failed run leaves the draft unpublished; rerun its failed jobs.
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  release-please:
+    name: Release please
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    outputs:
+      created: ${{ steps.release.outputs.release_created }}
+      tag: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - id: release
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          # A pull request GITHUB_TOKEN opens starts no workflows, so Verify
+          # would not run on the release PR; a token of a user or app does.
+          token: ${{ secrets.RELEASE_PR_TOKEN || github.token }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  check:
+    name: Check
+    needs: release-please
+    if: needs.release-please.outputs.created == 'true'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.release-please.outputs.tag }}
+      - uses: ./.github/actions/setup
+        with:
+          cache: false
+      - run: pnpm check
+
+  build:
+    name: Build (${{ matrix.platform }})
+    needs: release-please
+    if: needs.release-please.outputs.created == 'true'
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { platform: linux-x86_64, os: ubuntu-24.04 }
+          - { platform: windows-x64, os: windows-2025 }
+    defaults:
+      run:
+        shell: bash
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.release-please.outputs.tag }}
+      - uses: ./.github/actions/setup
+        with:
+          cache: false
+      - id: vst3
+        uses: ./.github/actions/vst3
+        with:
+          platform: ${{ matrix.platform }}
+      - if: runner.os == 'Linux'
+        run: sudo apt-get install -y --no-install-recommends xvfb
+      - if: runner.os == 'Linux'
+        run: xvfb-run -a -s "-screen 0 1920x1200x24" pnpm test:e2e
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: vst3-${{ matrix.platform }}
+          path: ${{ steps.vst3.outputs.zip }}
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    name: Publish
+    needs: [release-please, check, build]
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ needs.release-please.outputs.tag }}
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: vst3-*
+          merge-multiple: true
+          path: ${{ runner.temp }}/release
+      - name: Checksums
+        working-directory: ${{ runner.temp }}/release
+        run: |
+          sha256sum Orbit-*.zip > SHA256SUMS
+          cat SHA256SUMS
+      - uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4
+        with:
+          subject-checksums: ${{ runner.temp }}/release/SHA256SUMS
+      - name: Upload to the draft release
+        working-directory: ${{ runner.temp }}/release
+        run: gh release upload "$TAG" Orbit-*.zip SHA256SUMS --clobber
+      - name: Publish the release
+        run: gh release edit "$TAG" --draft=false --latest
+
+  website:
+    name: Website
+    needs: [release-please, publish]
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/website.yml
+    with:
+      cache: false
+      ref: ${{ needs.release-please.outputs.tag }}

@@ -1,0 +1,4 @@
+{
+  "ignorePatterns": ["**/.soundor/**"],
+  "plugins": ["react", "typescript"]
+}

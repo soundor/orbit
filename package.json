@@ -1,0 +1,58 @@
+{
+  "name": "orbit",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A playable three-voice stereo delay, built with Soundor: a VST3 plugin and the same plugin in the browser.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soundor/orbit.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "soundor build",
+    "build:vst3": "soundor build vst3",
+    "build:web": "soundor build web",
+    "check": "pnpm format && pnpm lint && pnpm typecheck && pnpm test && pnpm test:rust",
+    "dev": "soundor dev vst3",
+    "dev:web": "soundor dev web",
+    "doctor": "soundor doctor",
+    "format": "oxfmt --check",
+    "format:fix": "oxfmt",
+    "gen": "soundor gen",
+    "lint": "oxlint --deny-warnings .",
+    "test": "vitest run --project integration",
+    "test:e2e": "soundor build vst3 --debug && soundor gen && vitest run --project e2e",
+    "test:rust": "soundor gen && cargo test --manifest-path lib/Cargo.toml",
+    "test:watch": "vitest watch --project integration",
+    "typecheck": "soundor gen && tsc -b",
+    "website": "pnpm --filter orbit-website dev"
+  },
+  "dependencies": {
+    "@soundor/components": "0.3.0",
+    "@soundor/icons": "0.1.0",
+    "@soundor/react": "0.19.0",
+    "@soundor/vst3-runtime": "0.1.0",
+    "@soundor/web-runtime": "0.15.0",
+    "react": "19.3.1"
+  },
+  "devDependencies": {
+    "@soundor/config": "0.19.0",
+    "@soundor/testing-library": "0.19.0",
+    "@soundor/vitest": "0.19.0",
+    "@soundor/vitest-e2e": "0.19.0",
+    "@soundor/vst3-host": "0.2.1",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "oxfmt": "0.79.0",
+    "oxlint": "1.92.0",
+    "soundor": "0.19.0",
+    "typescript": "7.0.2",
+    "vitest": "5.1.0",
+    "vitest-environment-soundor": "0.19.0"
+  },
+  "engines": {
+    "node": "^24.0.0"
+  },
+  "packageManager": "pnpm@12.15.0"
+}

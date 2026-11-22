@@ -2,7 +2,7 @@ import { textStyle, useTheme } from '@soundor/components/theme';
 import { X } from '@soundor/icons/lucide';
 import { Text, View, useViewSize } from '@soundor/react';
 
-import { RoundIconButton } from './round-icon-button';
+import { RoundIconButton } from '../ui/round-icon-button';
 
 const sections = [
   ['Shape the echoes', 'Drag a dot sideways for timing, up or down for level.'],

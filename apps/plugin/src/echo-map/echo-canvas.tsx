@@ -13,7 +13,7 @@ import {
   type FieldRenderer,
   type FieldState,
 } from './field-renderer';
-import { bufferDensity, echoField } from './model';
+import { bufferDensity, mapSize } from './geometry';
 
 /**
  * The echoes' curves, drawn by the field renderer (WebGL, or a 2D canvas
@@ -73,9 +73,9 @@ export function EchoCanvas({ playing }: { playing: boolean }) {
     <Canvas
       key={String(fallback)}
       ref={canvas}
-      width={Math.round(echoField.width * density)}
-      height={Math.round(echoField.height * density)}
-      style={{ ...echoField, position: 'absolute', pointerEvents: 'none' }}
+      width={Math.round(mapSize.width * density)}
+      height={Math.round(mapSize.height * density)}
+      style={{ ...mapSize, position: 'absolute', pointerEvents: 'none' }}
     />
   );
 }

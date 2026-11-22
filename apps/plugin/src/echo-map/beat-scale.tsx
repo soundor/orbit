@@ -2,7 +2,7 @@ import { formatters } from '@soundor/components';
 import { textStyle, useTheme } from '@soundor/components/theme';
 import { Text } from '@soundor/react';
 
-import { echoCoordinates } from './model';
+import { mapCoordinates } from './geometry';
 
 /** The time axis under the echo map: beats in sync, else 500 ms steps. */
 export function BeatScale({ sync }: { sync: boolean }) {
@@ -14,7 +14,7 @@ export function BeatScale({ sync }: { sync: boolean }) {
         textStyle(theme, 'value', theme.color.displayMuted),
         {
           position: 'absolute',
-          left: echoCoordinates.x.map(beat) - 7,
+          left: mapCoordinates.x.map(beat) - 7,
           bottom: 14,
           fontSize: 9,
         },

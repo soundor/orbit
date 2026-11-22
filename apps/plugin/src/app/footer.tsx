@@ -11,7 +11,7 @@ import { parameters } from 'soundor:parameters';
 import { presets } from 'soundor:presets';
 import { state } from 'soundor:state';
 
-import { HelpGuide } from './help-guide';
+import { HelpGuide } from '../help/help-guide';
 
 /** Tempo sync and the tempo, what Orbit is doing, and the guide. */
 export function Footer({ bpm }: { bpm: number }) {

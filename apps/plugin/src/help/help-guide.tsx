@@ -3,8 +3,8 @@ import { Modal, useViewSize } from '@soundor/react';
 import { useRef, useState } from 'react';
 import type { UiNode } from 'soundor:ui';
 
+import { RoundIconButton } from '../ui/round-icon-button';
 import { GuidePanel } from './guide-panel';
-import { RoundIconButton } from './round-icon-button';
 
 /** The "How to use Orbit" button, and the guide it opens above itself. */
 export function HelpGuide() {

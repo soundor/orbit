@@ -2,10 +2,10 @@ import { textStyle, useTheme } from '@soundor/components/theme';
 import { Text, View, useParameter } from '@soundor/react';
 import { parameters } from 'soundor:parameters';
 
-import { voices } from './model';
+import { voices } from './voices';
 
 /** The echo map's title and hint, which say when it is held or bypassed. */
-export function EchoFieldTitle() {
+export function EchoMapTitle() {
   const theme = useTheme();
   const c = theme.color;
   const hold = useParameter(parameters.hold);

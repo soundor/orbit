@@ -1,10 +1,10 @@
 import { useTheme } from '@soundor/components/theme';
 import { View, useHostState } from '@soundor/react';
 
-import { EchoField } from './echo-field';
+import { KnobRow } from '../controls/knob-row';
+import { EchoMap } from '../echo-map/echo-map';
 import { Footer } from './footer';
 import { Header } from './header';
-import { KnobRow } from './knob-row';
 
 /** Orbit at the 800×600 it is laid out at: header, echo map, knobs, footer. */
 export function App() {
@@ -23,7 +23,7 @@ export function App() {
     >
       <Header />
       <View style={{ marginTop: 14 }}>
-        <EchoField bpm={bpm} playing={transport?.playing ?? false} />
+        <EchoMap bpm={bpm} playing={transport?.playing ?? false} />
       </View>
       <KnobRow />
       <Footer bpm={bpm} />

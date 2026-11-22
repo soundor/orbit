@@ -2,7 +2,8 @@ import { drawGrid } from '@soundor/components/chart';
 import { defaultTheme } from '@soundor/components/theme';
 import type { UiNode } from 'soundor:ui';
 
-import { echoFieldY, voices } from './model';
+import { curveScale } from './geometry';
+import { voices } from './voices';
 
 const colors = defaultTheme.color;
 const palette = voices.map((voice) => voice.color);
@@ -10,7 +11,7 @@ const gridViewport = {
   left: 24,
   top: 38,
   width: 704,
-  height: echoFieldY.baseline - 38,
+  height: curveScale.baseline - 38,
 };
 const verticalGrid = Array.from({ length: 9 }, (_, i) => 46 + i * 82.5);
 const horizontalGrid = [42, 82, 122, 162];
@@ -44,16 +45,16 @@ uniform vec3 taps, levels;
 uniform float clock, feedback, motion, bypass;
 float line(float d, float width) { return 1. - smoothstep(width, width * 2., abs(d)); }
 void main() {
-  vec2 p = vec2(uv.x * 752., (1. - uv.y) * ${echoFieldY.height}.);
+  vec2 p = vec2(uv.x * 752., (1. - uv.y) * ${curveScale.height}.);
   vec3 c = ${shaderColor(colors.display)};
   float grid = max(line(mod(p.x - 46. + 82.5, 82.5), .35), line(mod(p.y - 18. + 40., 40.), .35));
-  float baseline = ${echoFieldY.baseline}.;
+  float baseline = ${curveScale.baseline}.;
   c = mix(c, ${shaderColor(colors.displayGrid)}, grid);
   c = mix(c, ${shaderColor(colors.displayAxis)}, line(p.y - baseline, .45));
   vec3 palette[3] = vec3[3](${palette.map(shaderColor).join(',')});
   for (int i = 0; i < 3; i++) {
     float center = 46. + taps[i] / 3. * 660.;
-    float amplitude = levels[i] * ${echoFieldY.levelTravel}.;
+    float amplitude = levels[i] * ${curveScale.levelTravel}.;
     float envelope = exp(-pow((p.x - center) / (60. + feedback * 55.), 2.));
     float oscillation = .68 + .32 * cos((p.x - center) * .085 + sin(clock * .7 + float(i)) * motion * 2.);
     float ridge = baseline - envelope * amplitude * oscillation;
@@ -173,12 +174,12 @@ function fallback(canvas: UiNode): FieldRenderer {
         canvas.width / 752,
         0,
         0,
-        canvas.height / echoFieldY.height,
+        canvas.height / curveScale.height,
         0,
         0,
       );
       ctx.fillStyle = colors.display;
-      ctx.fillRect(0, 0, 752, echoFieldY.height);
+      ctx.fillRect(0, 0, 752, curveScale.height);
       drawGrid(
         ctx,
         gridViewport,
@@ -190,7 +191,7 @@ function fallback(canvas: UiNode): FieldRenderer {
         ctx,
         gridViewport,
         [],
-        [echoFieldY.baseline],
+        [curveScale.baseline],
         colors.displayAxis,
       );
       ctx.globalAlpha = state.bypass ? 0.45 : 1;
@@ -204,10 +205,10 @@ function fallback(canvas: UiNode): FieldRenderer {
             -(((x - center) / (60 + state.feedback * 55)) ** 2),
           );
           const y =
-            echoFieldY.baseline -
+            curveScale.baseline -
             envelope *
               state.levels[i]! *
-              echoFieldY.levelTravel *
+              curveScale.levelTravel *
               (0.68 +
                 0.32 *
                   Math.cos(

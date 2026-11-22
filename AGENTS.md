@@ -25,7 +25,7 @@ https://soundor.dev/docs; the UI uses `@soundor/components` and
 ```sh
 pnpm install
 pnpm check            # format + lint + typecheck + UI tests + Rust tests + site: what CI runs
-pnpm --filter orbit exec vitest run --project integration src/App.test.tsx -t "<name>"
+pnpm --filter orbit exec vitest run --project integration src/app/__tests__/app.spec.tsx -t "<name>"
 pnpm test:e2e         # the web build in Chromium (apps/plugin/e2e/web, Playwright)
 xvfb-run -a pnpm test:vst3  # the Debug VST3 in Soundor's VST3 host (apps/plugin/e2e/vst3)
 pnpm build:vst3       # release VST3 → apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
@@ -36,6 +36,13 @@ pnpm format:fix
 
 ## Conventions
 
+- `apps/plugin/src/` is organized by module, a folder per part of the UI:
+  `app/` (the editor, header, footer, logo), `echo-map/`, `controls/`,
+  `presets/`, `help/`, and `ui/` for building blocks they share. One
+  component per file, files in kebab-case named after what they export
+  (`preset-picker.tsx` → `PresetPicker`); a module's tests are in its
+  `__tests__/` as `*.spec.tsx`, and modules import each other's files
+  directly. Icons come from `@soundor/icons`, not hand-drawn SVG.
 - Soundor packages are pinned to exact versions; upgrade them together
   (the 0.19 packages, the VST3 runtime, the web runtime and the VST3 host
   are released together).

@@ -1,8 +1,8 @@
 import { View } from '@soundor/react';
 
-import { CompareControl } from './compare-control';
+import { CompareControl } from '../controls/compare-control';
+import { PresetPicker } from '../presets/preset-picker';
 import { Logo } from './logo';
-import { PresetPicker } from './preset-picker';
 
 /** The logo, the preset and the Original / Orbit comparison. */
 export function Header() {

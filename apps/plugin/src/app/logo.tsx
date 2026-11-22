@@ -3,7 +3,7 @@ import { Image } from '@soundor/react';
 // The repository's brand file (assets/brand), which the README and the
 // website show too: the icon and the Soundor Orbit wordmark, for light
 // backgrounds such as the editor's panel.
-import logo from '../../../assets/brand/soundor-orbit-logo.svg';
+import logo from '../../../../assets/brand/soundor-orbit-logo.svg';
 
 /** The logo's own proportions: its viewBox is 338.1 × 120. */
 const HEIGHT = 40;

@@ -3,14 +3,9 @@ import { useXYPad } from '@soundor/components/headless';
 import { textStyle, useTheme } from '@soundor/components/theme';
 import { Text, View } from '@soundor/react';
 
-import {
-  beatLabel,
-  echoCoordinates,
-  levels,
-  milliseconds,
-  times,
-  voices,
-} from './model';
+import { mapCoordinates } from './geometry';
+import { beatLabel, milliseconds } from './timing';
+import { levels, times, voices } from './voices';
 
 const size = 42;
 
@@ -51,8 +46,8 @@ export function EchoHandle({
       keyStep: [0.125, 0.05],
       dragMode: 'relative',
       travel: [
-        echoCoordinates.x.map(3) - echoCoordinates.x.map(0.125),
-        echoCoordinates.rect.height,
+        mapCoordinates.x.map(3) - mapCoordinates.x.map(0.125),
+        mapCoordinates.rect.height,
       ],
       describeValue: (value, level) =>
         `${format(value)}, ${Math.round(level * 100)} percent level`,
@@ -64,8 +59,8 @@ export function EchoHandle({
       {...handle.handlers}
       style={{
         position: 'absolute',
-        left: echoCoordinates.x.map(handle.x.value) - size / 2,
-        top: echoCoordinates.y.map(handle.y.value) - size / 2,
+        left: mapCoordinates.x.map(handle.x.value) - size / 2,
+        top: mapCoordinates.y.map(handle.y.value) - size / 2,
         width: size,
         height: size,
         alignItems: 'center',

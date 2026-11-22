@@ -3,8 +3,8 @@ import { join, resolve } from 'node:path';
 
 import { defineConfig, type Plugin } from 'vite';
 
-const root = resolve(import.meta.dirname, '..');
-/** Orbit's web build (`pnpm build:web` at the root): the plugin and its host. */
+const root = resolve(import.meta.dirname, '../plugin');
+/** Orbit's web build (turbo builds it first): the plugin and its host. */
 const webBuild = join(root, '.soundor/dist/web');
 const { version } = JSON.parse(
   readFileSync(join(root, 'package.json'), 'utf8'),
@@ -64,7 +64,7 @@ function downloads(): string {
  */
 function embed(): Plugin {
   const missing = () =>
-    new Error(`No web build in ${webBuild}: run pnpm build:web at the root.`);
+    new Error(`No web build in ${webBuild}: run pnpm build:web.`);
   let outDir = '';
   return {
     name: 'orbit-embed',

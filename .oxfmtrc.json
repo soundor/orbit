@@ -4,5 +4,5 @@
   "singleQuote": true,
   "sortImports": true,
   "sortPackageJson": true,
-  "ignorePatterns": ["**/.soundor/**", "CHANGELOG.md"]
+  "ignorePatterns": ["**/.soundor/**", "**/CHANGELOG.md"]
 }

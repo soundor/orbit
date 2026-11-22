@@ -1,13 +1,13 @@
 name: Website
 
-# orbit.soundor.dev: website/ (the page, and /embed/, Orbit's web build),
+# orbit.soundor.dev: apps/website (the page, and /embed/, Orbit's web build),
 # deployed to GitHub Pages.
 #
 # Release calls it once the release is published, with its tag, so the
 # download links name files that exist; run it by hand to deploy a
 # website-only change between releases (Actions → Website → Run workflow, or
-# `gh workflow run website.yml -f ref=main`). main's package.json names the
-# last release until the next release PR merges.
+# `gh workflow run website.yml -f ref=main`). main's apps/plugin/package.json
+# names the last release until the next release PR merges.
 
 on:
   workflow_call:
@@ -51,10 +51,10 @@ jobs:
       - uses: ./.github/actions/setup
         with:
           cache: ${{ inputs.cache }}
-      - run: pnpm --filter orbit-website build
+      - run: pnpm turbo run build --filter=orbit-website
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          path: website/dist
+          path: apps/website/dist
 
   deploy:
     name: Deploy

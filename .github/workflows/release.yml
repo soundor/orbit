@@ -1,8 +1,10 @@
 name: Release
 
 # Releases Orbit with release-please. Conventional commits on main keep a
-# release pull request open with the next version (package.json, which the
-# plugin reports) and CHANGELOG.md. Merging it runs, from the merge:
+# release pull request open with the next version (apps/plugin/package.json,
+# which the plugin reports) and apps/plugin/CHANGELOG.md. Only commits that
+# touch apps/plugin release; the website deploys by hand between releases.
+# Merging it runs, from the merge:
 #
 #   release-please  tag vX.Y.Z and create its GitHub release as a draft
 #   check           format, lint, types and tests of the tagged commit
@@ -93,7 +95,7 @@ jobs:
       - if: runner.os == 'Linux'
         run: sudo apt-get install -y --no-install-recommends xvfb
       - if: runner.os == 'Linux'
-        run: xvfb-run -a -s "-screen 0 1920x1200x24" pnpm test:e2e
+        run: xvfb-run -a -s "-screen 0 1920x1200x24" pnpm --filter orbit test:e2e
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: vst3-${{ matrix.platform }}

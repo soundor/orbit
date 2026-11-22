@@ -1,7 +1,8 @@
 node_modules/
 dist/
 .soundor/
-lib/target/
+.turbo/
+apps/plugin/lib/target/
 *.tgz
 test-results/
 playwright-report/

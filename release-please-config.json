@@ -7,7 +7,7 @@
   "force-tag-creation": true,
   "pull-request-title-pattern": "chore: release ${version}",
   "packages": {
-    ".": {
+    "apps/plugin": {
       "package-name": "orbit",
       "changelog-path": "CHANGELOG.md"
     }

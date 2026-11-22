@@ -43,8 +43,8 @@ version always processes the host's audio input.
 - Preset arrows apply four starting points and release Hold. The preset name
   identifies the starting point; parameter edits do not rename it.
 
-`src/` is portable Soundor UI: no DOM, browser audio, or platform checks.
-The VST3 and Web runtimes run the same Rust processor from `lib/`,
+`apps/plugin/src/` is portable Soundor UI: no DOM, browser audio, or platform checks.
+The VST3 and Web runtimes run the same Rust processor from `apps/plugin/lib/`,
 natively and in an AudioWorklet respectively. It uses three
 filtered, saturated feedback lines, interpolated reads, smoothed delay times
 and mix/bypass. The wet signal uses the input's mono sum; the dry signal
@@ -58,20 +58,22 @@ compensation or oversampling.
 
 ## Develop
 
-Node 24, pnpm (through corepack) and stable Rust; the VST3 build also needs
+The repository is a pnpm workspace run by Turborepo: `apps/plugin` is the
+plugin (package `orbit`), `apps/website` the site. You need Node 24, pnpm
+(through corepack) and stable Rust; the VST3 build also needs
 [Soundor's native prerequisites](https://soundor.dev/docs/vst3-runtime#requirements).
 
 ```sh
 pnpm install
 pnpm dev:web        # in the browser
 pnpm dev            # the VST3 in Soundor's VST3 host
-pnpm check          # format, lint, types, UI tests, Rust tests: what CI runs
+pnpm check          # format, lint, types, UI tests, Rust tests, the site: what CI runs
 pnpm test:e2e       # the Debug VST3 in the VST3 host (xvfb-run -a without a display)
-pnpm build:vst3     # .soundor/dist/vst3/Orbit.vst3
+pnpm build:vst3     # apps/plugin/.soundor/dist/vst3/Orbit.vst3
 pnpm website        # orbit.soundor.dev, with /embed/
 ```
 
-`e2e/` tests the built VST3 in the real VST3 host, UI and audio together, with
+`apps/plugin/e2e/` tests the built VST3 in the real VST3 host, UI and audio together, with
 [`@soundor/vitest-e2e`](https://soundor.dev/docs/testing/e2e).
 
 ## Embed
@@ -104,8 +106,9 @@ the class IDs derived from it.
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org).
 [release-please](https://github.com/googleapis/release-please) keeps a release
-pull request open with the next version in `package.json` (which
-`soundor.config.ts` reports to hosts) and `CHANGELOG.md`. Merging it tags the
+pull request open with the next version in `apps/plugin/package.json`
+(which `soundor.config.ts` reports to hosts) and `apps/plugin/CHANGELOG.md`,
+from the commits that touch `apps/plugin`. Merging it tags the
 release and runs `.github/workflows/release.yml`: the checks, the VST3 built
 on Linux and Windows, the zips, `SHA256SUMS` and their provenance uploaded to
 the draft release, which is then published, and the website deployed.

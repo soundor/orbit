@@ -4,8 +4,8 @@
   "description": "orbit.soundor.dev: Orbit in the browser, its downloads, and /embed/, the page other sites put in an iframe.",
   "type": "module",
   "scripts": {
-    "build": "pnpm --dir .. build:web && vite build",
-    "dev": "pnpm --dir .. build:web && vite",
+    "build": "vite build",
+    "dev": "vite",
     "preview": "vite preview"
   },
   "devDependencies": {

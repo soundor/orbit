@@ -1,5 +1,5 @@
 packages:
-  - website
+  - apps/*
 
 engineStrict: true
 # Two days: a release that is pulled soon after publishing never gets here.

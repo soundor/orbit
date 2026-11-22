@@ -16,15 +16,15 @@ runs:
   using: composite
   steps:
     - shell: bash
-      run: pnpm build:vst3
+      run: pnpm --filter orbit build:vst3
     - id: pack
       shell: bash
       env:
         PLATFORM: ${{ inputs.platform }}
       run: |
-        version=$(node -p "require('./package.json').version")
+        version=$(node -p "require('./apps/plugin/package.json').version")
         zip="$RUNNER_TEMP/Orbit-$version-$PLATFORM.zip"
-        cd .soundor/dist/vst3
+        cd apps/plugin/.soundor/dist/vst3
         if [[ "$RUNNER_OS" == Windows ]]; then
           7z a -tzip "$(cygpath -w "$zip")" Orbit.vst3 > /dev/null
         else

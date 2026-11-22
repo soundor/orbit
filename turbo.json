@@ -32,6 +32,11 @@
     // The site copies the plugin's web build into /embed/.
     "orbit-website#build": {
       "dependsOn": ["orbit#build:web"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "../plugin/CHANGELOG.md",
+        "../plugin/package.json"
+      ],
       "outputs": ["dist/**"]
     },
     "orbit-website#dev": {

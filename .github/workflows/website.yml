@@ -1,6 +1,7 @@
 name: Website
 
-# orbit.soundor.dev: apps/website (the page, and /embed/, Orbit's web build),
+# orbit.soundor.dev: apps/website (Fumadocs on TanStack Start, prerendered:
+# the landing page, the docs, the changelog, and /embed/, Orbit's web build),
 # deployed to GitHub Pages.
 #
 # Release calls it once the release is published, with its tag, so the
@@ -54,7 +55,7 @@ jobs:
       - run: pnpm turbo run build --filter=orbit-website
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          path: apps/website/dist
+          path: apps/website/dist/client
 
   deploy:
     name: Deploy

@@ -1,0 +1,40 @@
+---
+title: Orbit in the browser
+description: Play Orbit on this site, with your own audio, or embed it in your page.
+---
+
+The Orbit on this site is the same plugin as the VST3, running in your
+browser: the same interface and the same audio processing.
+
+## Audio sources
+
+The bar under the plugin has **Play**, the volume, and a settings button.
+In the settings, choose what Orbit hears:
+
+- the demo phrase (the default)
+- an audio file from your computer
+- your microphone (the browser asks for permission first; use headphones to
+  avoid feedback)
+- an oscillator
+- nothing
+
+The settings also hold the tempo, which Sync follows.
+
+## Embed Orbit in your page
+
+[orbit.soundor.dev/embed/](https://orbit.soundor.dev/embed/) is Orbit alone,
+scaled to fit whatever frame it's in, with the bar under it:
+
+```html
+<iframe
+  src="https://orbit.soundor.dev/embed/"
+  title="Orbit, a three-voice stereo delay"
+  allow="autoplay; microphone"
+  width="800"
+  height="640"
+></iframe>
+```
+
+`allow="autoplay; microphone"` lets it play once the visitor interacts with
+it, and use their microphone if they choose it. Orbit keeps its shape: in a
+frame of another shape, its background fills the rest.

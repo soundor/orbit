@@ -4,5 +4,12 @@
   "singleQuote": true,
   "sortImports": true,
   "sortPackageJson": true,
-  "ignorePatterns": ["**/.soundor/**", "**/CHANGELOG.md"]
+  "ignorePatterns": [
+    "**/.soundor/**",
+    "**/.source/**",
+    "**/CHANGELOG.md",
+    "**/content/docs/changelog.mdx",
+    "**/public/embed/**",
+    "**/routeTree.gen.ts"
+  ]
 }

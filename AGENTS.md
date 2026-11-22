@@ -9,7 +9,11 @@ A pnpm workspace run by Turborepo. `apps/plugin` (package `orbit`) is the
 plugin: `soundor.config.ts` declares it (parameters, presets, state, the
 runtimes), `src/` is its React UI (portable Soundor UI: no DOM or browser
 APIs), `lib/` its Rust processor and controller, `web/inputs.ts` the web
-host's demo inputs. `apps/website` is orbit.soundor.dev, whose `/embed/` is the
+host's demo inputs. `apps/website` is orbit.soundor.dev (Fumadocs on
+TanStack Start, prerendered for GitHub Pages): the landing page
+(`src/routes/index.tsx`), the user docs in `content/docs/` (keep them in sync
+when behaviour changes), the changelog page written from
+`apps/plugin/CHANGELOG.md` by `scripts/changelog.ts`, and `/embed/`, the
 web build itself, for iframes. Soundor's own docs are at
 https://soundor.dev/docs; the UI uses `@soundor/components` and
 `@soundor/icons`.

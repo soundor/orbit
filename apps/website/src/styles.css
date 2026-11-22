@@ -1,0 +1,336 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+/* Orbit's own materials: the plugin's panel and ink, the echo map's night,
+   and its three voices. Geist is the face the plugin draws with. */
+
+@font-face {
+  font-family: Geist;
+  src: url('/fonts/Geist-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: Geist;
+  src: url('/fonts/Geist-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: Geist;
+  src: url('/fonts/Geist-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Geist Mono';
+  src: url('/fonts/GeistMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: Geist, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, monospace;
+}
+
+:root {
+  --orbit-panel: #e7e8e0;
+  --orbit-ink: #23252a;
+  --orbit-graphite: #595d5a;
+  --orbit-night: #10121a;
+  --orbit-lavender: #b7a3ff;
+  --orbit-lime: #9fc45a;
+  --orbit-coral: #f09f87;
+
+  /* Fumadocs' light theme on the plugin's panel. */
+  --color-fd-background: #ecede6;
+  --color-fd-card: #f3f4ee;
+  --color-fd-secondary: #e2e3da;
+  --color-fd-muted: #e2e3da;
+  --color-fd-accent: #dcded3;
+  --color-fd-border: #d3d5ca;
+  --color-fd-foreground: var(--orbit-ink);
+  --color-fd-muted-foreground: var(--orbit-graphite);
+  --color-fd-primary: var(--orbit-ink);
+  --color-fd-primary-foreground: var(--orbit-panel);
+}
+
+/* The dark theme in the echo map's night. */
+.dark {
+  --orbit-panel: #1a1d26;
+  --orbit-ink: #e7e8e0;
+  --orbit-graphite: #a3a79f;
+  --orbit-lime: #c3e879;
+
+  --color-fd-background: #10121a;
+  --color-fd-card: #161922;
+  --color-fd-secondary: #1c1f29;
+  --color-fd-muted: #1c1f29;
+  --color-fd-accent: #232733;
+  --color-fd-border: #2a2e3a;
+  --color-fd-foreground: #e7e8e0;
+  --color-fd-muted-foreground: #a3a79f;
+  --color-fd-primary: var(--orbit-lavender);
+  --color-fd-primary-foreground: #10121a;
+}
+
+.orbit-nav-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* The player: the web host's dark stage, framed as the echo map is. */
+.orbit-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 800 / 700;
+  max-height: min(80vh, 52rem);
+  border: 0;
+  border-radius: 14px;
+  background: #10121a;
+}
+
+.release-breaking {
+  display: inline-block;
+  margin-inline-start: 0.4em;
+  color: #b45309;
+  vertical-align: -0.1em;
+}
+.dark .release-breaking {
+  color: #fcd34d;
+}
+
+/* The download buttons: the plugin's selected-button look, ink on the panel. */
+.orbit-downloads ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 22rem));
+  gap: 2rem 3rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+.orbit-downloads li {
+  display: grid;
+  gap: 0.6rem;
+  align-content: start;
+  margin: 0;
+  padding: 0;
+}
+.orbit-downloads li p {
+  margin: 0;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.9375rem;
+}
+.orbit-download {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.95rem 1.15rem;
+  border-radius: 10px;
+  background: var(--color-fd-primary);
+  color: var(--color-fd-primary-foreground) !important;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1.328rem;
+  letter-spacing: -0.01em;
+}
+.orbit-download:hover {
+  opacity: 0.9;
+}
+.orbit-download-arch {
+  font-weight: 400;
+  font-size: 1.0625rem;
+  opacity: 0.7;
+}
+.orbit-downloads .orbit-file {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  overflow-wrap: anywhere;
+}
+.orbit-aside {
+  color: var(--color-fd-muted-foreground);
+}
+
+/* The landing page. */
+.orbit-landing {
+  --measure: 34rem;
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  width: 100%;
+  max-width: 82rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+.orbit-landing a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+.orbit-landing a:hover {
+  text-decoration-thickness: 2px;
+}
+.orbit-landing p {
+  max-width: var(--measure);
+}
+.orbit-landing h2 {
+  font-size: 1.66rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+.orbit-landing h3 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* The one loud thing: the name and its three repeats. */
+.orbit-hero {
+  padding: clamp(2rem, 7vw, 5rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+  overflow: hidden;
+}
+.orbit-wordmark {
+  margin: 0 0 1.5rem;
+  font-size: clamp(4.5rem, 15vw, 12.5rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.85;
+  white-space: nowrap;
+}
+.orbit-echo {
+  display: inline-block;
+  margin-left: 0.2em;
+  color: transparent;
+  -webkit-text-stroke: 0.022em var(--voice);
+  opacity: var(--level);
+  font-size: var(--scale);
+  animation: orbit-answer 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation-delay: var(--delay);
+}
+/* Orbit's default times: a dotted eighth, a dotted quarter, 2.25 beats. */
+.orbit-echo-1 {
+  --voice: var(--orbit-lavender);
+  --level: 0.95;
+  --scale: 0.62em;
+  --delay: 0.375s;
+}
+.orbit-echo-2 {
+  --voice: var(--orbit-lime);
+  --level: 0.75;
+  --scale: 0.42em;
+  --delay: 0.75s;
+}
+.orbit-echo-3 {
+  --voice: var(--orbit-coral);
+  --level: 0.55;
+  --scale: 0.28em;
+  --delay: 1.125s;
+}
+@keyframes orbit-answer {
+  from {
+    opacity: 0;
+    transform: translateX(-0.25em);
+  }
+  to {
+    opacity: var(--level);
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit-echo {
+    animation: none;
+  }
+}
+
+.orbit-lede {
+  font-size: 1.328rem;
+  line-height: 1.45;
+  max-width: 30rem !important;
+}
+.orbit-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+.orbit-landing .orbit-button {
+  padding: 0.7rem 1.1rem;
+  border: 1px solid var(--color-fd-border);
+  border-radius: 10px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.orbit-landing .orbit-button:hover {
+  background: var(--color-fd-accent);
+}
+.orbit-landing .orbit-button-primary {
+  border-color: var(--color-fd-primary);
+  background: var(--color-fd-primary);
+  color: var(--color-fd-primary-foreground);
+}
+.orbit-landing .orbit-button-primary:hover {
+  background: var(--color-fd-primary);
+  opacity: 0.9;
+}
+
+.orbit-stage {
+  margin: 0;
+}
+.orbit-stage figcaption {
+  margin-top: 0.75rem;
+  color: var(--color-fd-muted-foreground);
+  font-size: 0.9375rem;
+  max-width: var(--measure);
+}
+
+.orbit-section {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(3rem, 8vw, 5.5rem) 0 0;
+}
+.orbit-features {
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem 3rem;
+}
+.orbit-features h2 {
+  grid-column: 1 / -1;
+}
+.orbit-feature {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+}
+.orbit-landing .orbit-feature h3 a {
+  text-decoration: none;
+}
+.orbit-landing .orbit-feature h3 a:hover {
+  text-decoration: underline;
+}
+.orbit-feature p {
+  color: var(--color-fd-muted-foreground);
+}
+
+.orbit-code {
+  margin: 0;
+  max-width: 40rem;
+  padding: 1.15rem 1.35rem;
+  overflow-x: auto;
+  border-radius: 10px;
+  background: #10121a;
+  color: #e7e8e0;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.orbit-footer {
+  margin-top: clamp(4rem, 10vw, 7rem);
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--color-fd-border);
+  color: var(--color-fd-muted-foreground);
+}

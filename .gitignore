@@ -6,3 +6,11 @@ apps/plugin/lib/target/
 *.tgz
 test-results/
 playwright-report/
+
+# Written by apps/website/scripts: the plugin's web build, and the changelog page
+apps/website/public/embed/
+apps/website/content/docs/changelog.mdx
+.source/
+routeTree.gen.ts
+.output/
+.tanstack/

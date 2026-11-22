@@ -59,7 +59,9 @@ compensation or oversampling.
 ## Develop
 
 The repository is a pnpm workspace run by Turborepo: `apps/plugin` is the
-plugin (package `orbit`), `apps/website` the site. You need Node 24, pnpm
+plugin (package `orbit`), `apps/website` the site (Fumadocs on TanStack
+Start: the landing page, the docs, the changelog from
+`apps/plugin/CHANGELOG.md`, and `/embed/`). You need Node 24, pnpm
 (through corepack) and stable Rust; the VST3 build also needs
 [Soundor's native prerequisites](https://soundor.dev/docs/vst3-runtime#requirements).
 

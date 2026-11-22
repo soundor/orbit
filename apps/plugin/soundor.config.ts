@@ -13,7 +13,7 @@ export default defineSoundorConfig({
     name: 'Soundor Orbit',
     // release-please bumps package.json; the plugin reports that version.
     version: manifest.version,
-    vendor: { name: 'Soundor', website: 'https://orbit.soundor.dev' },
+    vendor: { name: 'Soundor', website: 'https://soundor.dev' },
   },
   // Resizing zooms the plugin rather than laying it out again, so its knobs
   // and echoes stay where the user learned them: always laid out at

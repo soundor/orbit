@@ -5,9 +5,12 @@ import {
   DocsDescription,
   DocsPage,
   DocsTitle,
+  PageFooter,
 } from 'fumadocs-ui/layouts/docs/page';
+import type { ComponentProps } from 'react';
 
 import { getMDXComponents } from '../../components/mdx';
+import { PageLegal } from '../../components/site-footer';
 import { layoutOptions } from '../../layout-options';
 import { source } from '../../source';
 
@@ -43,7 +46,7 @@ function Documentation() {
       tree={source.getPageTree()}
       sidebar={{ tabs: false }}
     >
-      <DocsPage toc={page.data.toc}>
+      <DocsPage toc={page.data.toc} slots={{ footer: PageFooterWithLegal }}>
         <DocsTitle>{title}</DocsTitle>
         <DocsDescription>{description}</DocsDescription>
         <DocsBody>
@@ -51,5 +54,15 @@ function Documentation() {
         </DocsBody>
       </DocsPage>
     </DocsLayout>
+  );
+}
+
+/** The page's previous and next links, then the site's legal line. */
+function PageFooterWithLegal(props: ComponentProps<typeof PageFooter>) {
+  return (
+    <>
+      <PageFooter {...props} />
+      <PageLegal />
+    </>
   );
 }

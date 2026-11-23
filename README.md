@@ -111,3 +111,16 @@ on Linux and Windows, the zips, `SHA256SUMS` and their provenance uploaded to
 the draft release, which is then published, and the website deployed. A run
 that stopped before publishing finishes from Actions → Release → Run workflow,
 with the draft's tag.
+
+## License & Branding
+
+Orbit's software is [MIT licensed](LICENSE).
+
+The Soundor name and the Soundor Orbit logo are the project's identity, not
+part of the software license: the logo files in [`assets/brand`](assets/brand)
+have their own [notice](assets/brand/LICENSE.md). You are free to study, change
+and redistribute Orbit's code under the MIT License, and to build plugins of
+your own with Soundor; please give a fork its own name and logo rather than
+presenting it as an official Soundor release. See the
+[Brand Guidelines](https://soundor.dev/brand) and [BRANDING.md](BRANDING.md),
+and the [Privacy Policy](https://soundor.dev/privacy).

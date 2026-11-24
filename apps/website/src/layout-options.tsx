@@ -13,12 +13,14 @@ export const layoutOptions = {
         <img
           src={logo}
           alt="Soundor Orbit"
+          width={90}
           height={36}
           className="h-9 w-auto dark:hidden"
         />
         <img
           src={logoDark}
           alt="Soundor Orbit"
+          width={90}
           height={36}
           className="hidden h-9 w-auto dark:block"
         />

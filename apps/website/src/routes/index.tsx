@@ -16,6 +16,7 @@ import {
 import { Downloads } from '../components/downloads';
 import { HeroActions } from '../components/hero-actions';
 import { Player } from '../components/player';
+import { SiteFooter } from '../components/site-footer';
 import { layoutOptions } from '../layout-options';
 import { released, version } from '../release';
 
@@ -179,6 +180,7 @@ function Home() {
           </section>
         </div>
       </main>
+      <SiteFooter />
     </HomeLayout>
   );
 }

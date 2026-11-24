@@ -18,13 +18,13 @@ function Legal() {
   return (
     <div className="flex flex-col gap-2 text-xs text-fd-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:gap-4">
       <p>
-        © <span suppressHydrationWarning>{years}</span> Soundor. Orbit’s
+        © <span suppressHydrationWarning>{years}</span> Dmitrii Balakin. Orbit’s
         software is released under the{' '}
         <a
           className={`underline underline-offset-2 ${link}`}
           href={`${repository}/blob/main/LICENSE`}
         >
-          MIT License
+          GNU Affero General Public License v3
         </a>
         .
       </p>

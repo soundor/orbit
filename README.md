@@ -114,13 +114,16 @@ with the draft's tag.
 
 ## License & Branding
 
-Orbit's software is [MIT licensed](LICENSE).
+Orbit's software is licensed under the
+[GNU Affero General Public License v3](LICENSE), Copyright (c) 2026-present
+Dmitrii Balakin. Releases up to 0.1.1 were published under the MIT License,
+and those copies stay under it.
 
 The Soundor name and the Soundor Orbit logo are the project's identity, not
 part of the software license: the logo files in [`assets/brand`](assets/brand)
 have their own [notice](assets/brand/LICENSE.md). You are free to study, change
-and redistribute Orbit's code under the MIT License, and to build plugins of
-your own with Soundor; please give a fork its own name and logo rather than
+and redistribute Orbit's code under the AGPL, and to build plugins of your
+own with Soundor; please give a fork its own name and logo rather than
 presenting it as an official Soundor release. See the
 [Brand Guidelines](https://soundor.dev/brand) and [BRANDING.md](BRANDING.md),
 and the [Privacy Policy](https://soundor.dev/privacy).

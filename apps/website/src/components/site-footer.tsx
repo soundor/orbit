@@ -26,7 +26,7 @@ function Legal() {
         >
           GNU Affero General Public License v3
         </a>
-        .
+        . Music you make with it is yours.
       </p>
       <nav aria-label="Legal" className="flex flex-wrap gap-x-4 gap-y-1">
         <a className={link} href="https://soundor.dev/privacy">

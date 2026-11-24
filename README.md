@@ -119,6 +119,10 @@ Orbit's software is licensed under the
 Dmitrii Balakin. Releases up to 0.1.1 were published under the MIT License,
 and those copies stay under it.
 
+The license covers Orbit, not what is made with it: music and audio
+processed or rendered with Orbit belong to whoever made them, free of any
+condition from Orbit's license.
+
 The Soundor name and the Soundor Orbit logo are the project's identity, not
 part of the software license: the logo files in [`assets/brand`](assets/brand)
 have their own [notice](assets/brand/LICENSE.md). You are free to study, change

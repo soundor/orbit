@@ -1,9 +1,9 @@
 # Soundor Orbit brand assets: license
 
-Copyright (c) 2026 Soundor
+Copyright (c) 2026-present Dmitrii Balakin
 
 The files listed below are the official Soundor Orbit logo and icon. They are
-**not** covered by the repository's [MIT License](../../LICENSE), which
+**not** covered by the repository's [GNU Affero General Public License v3](../../LICENSE), which
 applies to the software.
 
 You may use them, unmodified, to refer to Soundor Orbit: in articles,
@@ -41,14 +41,14 @@ and their copies in the repository:
 
 ## What this notice does not change
 
-- The software in this repository stays under the MIT License, with all the
-  permissions it grants. You may build, sell and distribute software with it,
-  open source or not, without using these files.
+- The software in this repository stays under the GNU Affero General Public
+  License v3, with all the permissions it grants. You may modify, sell and
+  distribute it under that license without using these files.
 - Earlier versions of these files were published in this repository from
   2026-11-22 without a separate notice, so under the repository's MIT
   License. Those grants are not withdrawn. This notice applies to the files as
   published from the commit that added it.
-- Orbit’s editor shows `soundor-orbit-logo.svg`, so builds of the plugin contain it. The logo in a build is covered by this notice; the rest of the build by the MIT License.
+- Orbit’s editor shows `soundor-orbit-logo.svg`, so builds of the plugin contain it. The logo in a build is covered by this notice; the rest of the build by the GNU Affero General Public License v3.
 - Nothing here restricts what the law allows without permission, such as
   naming Soundor Orbit to describe what your software works with.
 - The names are set in Space Grotesk (SIL Open Font License 1.1) and outlined

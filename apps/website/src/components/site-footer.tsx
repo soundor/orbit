@@ -18,15 +18,15 @@ function Legal() {
   return (
     <div className="flex flex-col gap-2 text-xs text-fd-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:gap-4">
       <p>
-        © <span suppressHydrationWarning>{years}</span> Soundor. Orbit’s
+        © <span suppressHydrationWarning>{years}</span> Dmitrii Balakin. Orbit’s
         software is released under the{' '}
         <a
           className={`underline underline-offset-2 ${link}`}
           href={`${repository}/blob/main/LICENSE`}
         >
-          MIT License
+          GNU Affero General Public License v3
         </a>
-        .
+        . Music you make with it is yours.
       </p>
       <nav aria-label="Legal" className="flex flex-wrap gap-x-4 gap-y-1">
         <a className={link} href="https://soundor.dev/privacy">

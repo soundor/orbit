@@ -143,7 +143,7 @@ function Home() {
                 icon={<Code />}
                 title="Open source"
                 href="/docs/building"
-                description="React for the interface, Rust for the sound, built with Soundor. MIT licensed."
+                description="React for the interface, Rust for the sound, built with Soundor. Licensed under the AGPL-3.0."
               />
             </Cards>
           </section>

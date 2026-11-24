@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "private": true,
   "description": "A playable three-voice stereo delay, built with Soundor: a VST3 plugin and the same plugin in the browser.",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/soundor/orbit.git",

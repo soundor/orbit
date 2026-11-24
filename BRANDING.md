@@ -6,11 +6,13 @@ ecosystem. The canonical guidelines for the Soundor name and logos are the
 
 ## The software is yours to use
 
-The software here is under the [MIT License](LICENSE), Copyright (c)
-2026 Soundor.
-These guidelines do not change that license or anything it permits. You can use
-the software commercially, build proprietary or open-source plugins with it,
-and modify and distribute it under its terms.
+The software here is under the
+[GNU Affero General Public License v3](LICENSE), Copyright (c) 2026-present
+Dmitrii Balakin.
+These guidelines do not change that license or anything it permits. You can
+use, study, modify and distribute the software, commercially too, under its
+terms: what you distribute or offer over a network that is based on it is
+under the same license, with its source.
 
 ## Referring to Soundor
 
@@ -32,4 +34,4 @@ Please:
 - don't use the official logos, or look-alikes, as your product's logo or icon.
 
 The logo files in [`assets/brand`](assets/brand) come with their own
-[notice](assets/brand/LICENSE.md), separate from the MIT License. Questions: [open an issue](https://github.com/soundor/soundor/issues).
+[notice](assets/brand/LICENSE.md), separate from the software's license. Questions: [open an issue](https://github.com/soundor/soundor/issues).

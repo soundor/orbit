@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/soundor/orbit/compare/v0.1.0...v0.1.1) (2026-11-24)
+
+
+### Bug Fixes
+
+* **plugin:** show the final Soundor Orbit logo ([ef6540e](https://github.com/soundor/orbit/commit/ef6540ed6b860d941b9894a903b4fc904fb87ee7))
+
 ## 0.1.0 (2026-11-22)
 
 

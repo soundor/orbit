@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.2](https://github.com/soundor/orbit/compare/v0.1.1...v0.1.2) (2026-11-25)
+
+
+### Bug Fixes
+
+* **deps:** upgrade to Soundor 0.21 ([e34a776](https://github.com/soundor/orbit/commit/e34a7769d6269174d584737b1962b0d2c1e20fcc))
+* **deps:** upgrade to Soundor 0.21 ([972a73d](https://github.com/soundor/orbit/commit/972a73d4d8ed0824a5dd1520c4c474dddc3091a4))
+
 ## [0.1.1](https://github.com/soundor/orbit/compare/v0.1.0...v0.1.1) (2026-11-24)
 
 

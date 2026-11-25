@@ -44,7 +44,7 @@ pnpm format:fix
   `__tests__/` as `*.spec.tsx`, and modules import each other's files
   directly. Icons come from `@soundor/icons`, not hand-drawn SVG.
 - Soundor packages are pinned to exact versions; upgrade them together
-  (the 0.19 packages, the VST3 runtime, the web runtime and the VST3 host
+  (the 0.21 packages, the VST3 runtime, the web runtime and the VST3 host
   are released together).
 - Conventional Commits: release-please derives the next version and
   `apps/plugin/CHANGELOG.md` from the commits touching `apps/plugin`. Never

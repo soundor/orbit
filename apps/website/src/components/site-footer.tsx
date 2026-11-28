@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
+import { soundor } from '../layout-options';
 import { repository } from '../release';
 
 /** The year the copyright starts, as in the repository's LICENSE. */
@@ -29,10 +30,10 @@ function Legal() {
         . Music you make with it is yours.
       </p>
       <nav aria-label="Legal" className="flex flex-wrap gap-x-4 gap-y-1">
-        <a className={link} href="https://soundor.dev/privacy">
+        <a className={link} href={`${soundor}/privacy`}>
           Privacy
         </a>
-        <a className={link} href="https://soundor.dev/brand">
+        <a className={link} href={`${soundor}/brand`}>
           Brand
         </a>
       </nav>
@@ -51,6 +52,12 @@ export function SiteFooter() {
             <Link className={link} to="/docs/$" params={{ _splat: '' }}>
               Docs
             </Link>
+            <Link className={link} to="/demo">
+              Demo
+            </Link>
+            <Link className={link} to="/" hash="download">
+              Download
+            </Link>
             <Link
               className={link}
               to="/docs/$"
@@ -61,7 +68,10 @@ export function SiteFooter() {
             <a className={link} href={repository}>
               GitHub
             </a>
-            <a className={link} href="https://soundor.dev/">
+            <a className={link} href={`${soundor}/plugins`}>
+              More plugins
+            </a>
+            <a className={link} href={`${soundor}/`}>
               Soundor
             </a>
           </nav>

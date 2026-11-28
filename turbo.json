@@ -43,10 +43,13 @@
         "../plugin/CHANGELOG.md",
         "../plugin/package.json"
       ],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      // The build screenshots the web build in Chromium.
+      "passThroughEnv": ["PLAYWRIGHT_BROWSERS_PATH"]
     },
     "orbit-website#dev": {
       "dependsOn": ["orbit#build:web"],
+      "passThroughEnv": ["PLAYWRIGHT_BROWSERS_PATH"],
       "cache": false,
       "persistent": true
     }

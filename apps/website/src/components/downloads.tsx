@@ -33,7 +33,8 @@ export function Downloads({
   }
   return (
     <div>
-      <Cards className="sm:grid-cols-2">
+      {/* Left-aligned even under the landing page's centered heading. */}
+      <Cards className="text-left sm:grid-cols-2">
         {platforms.map((platform) => (
           <Card
             key={platform.name}

@@ -7,8 +7,9 @@ apps/plugin/lib/target/
 test-results/
 playwright-report/
 
-# Written by apps/website/scripts: the plugin's web build, and the changelog page
+# Written by apps/website/scripts: the plugin's web build, its screenshots, and the changelog page
 apps/website/public/embed/
+apps/website/src/assets/gallery/
 apps/website/content/docs/changelog.mdx
 .source/
 routeTree.gen.ts

@@ -17,7 +17,7 @@ const outline = buttonVariants({
 /**
  * The hero's buttons. On Linux and Windows, the main one downloads that
  * platform's zip; on macOS, which has no release yet, and on systems that
- * run no VST3, it plays Orbit here. Prerendered, and before hydration, it
+ * run no VST3, it opens the demo. Prerendered, and before hydration, it
  * goes to the download section.
  */
 export function HeroActions() {
@@ -75,10 +75,10 @@ export function HeroActions() {
         </>
       }
     >
-      <a className={primary} href="#play">
+      <Link className={primary} to="/demo">
         <Play aria-hidden className="size-4" />
         Play in your browser
-      </a>
+      </Link>
       {docs}
     </Actions>
   );

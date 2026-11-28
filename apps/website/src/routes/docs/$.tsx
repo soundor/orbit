@@ -11,7 +11,7 @@ import type { ComponentProps } from 'react';
 
 import { getMDXComponents } from '../../components/mdx';
 import { PageLegal } from '../../components/site-footer';
-import { layoutOptions } from '../../layout-options';
+import { demoLink, layoutOptions } from '../../layout-options';
 import { source } from '../../source';
 
 export const Route = createFileRoute('/docs/$')({
@@ -42,7 +42,7 @@ function Documentation() {
     <DocsLayout
       {...layoutOptions}
       // The sidebar lists the docs, the changelog among them.
-      links={[]}
+      links={[demoLink]}
       tree={source.getPageTree()}
       sidebar={{ tabs: false }}
     >

@@ -32,6 +32,8 @@ minimumReleaseAgeExclude:
   - '@soundor/web-runtime@0.18.0'
   - 'soundor@0.21.1'
   - 'vitest-environment-soundor@0.21.1'
+  # The home page's screenshot carousel.
+  - swiper@14.5.0
 autoInstallPeers: false
 strictPeerDependencies: true
 allowBuilds:

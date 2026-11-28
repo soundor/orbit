@@ -2,6 +2,20 @@
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
 
+/* The echoes' colours (apps/plugin/src/echo-map/voices.ts). */
+:root {
+  --orbit-voice-1: #ff8f4d;
+  --orbit-voice-2: #c4ec6f;
+  --orbit-voice-3: #b8a3ff;
+}
+
+/* Deeper on a light page, so that lines on it read. */
+:root:not(.dark) {
+  --orbit-voice-1: #e2621b;
+  --orbit-voice-2: #5d8f0a;
+  --orbit-voice-3: #7b5ce6;
+}
+
 .release-breaking {
   display: inline-block;
   margin-inline-start: 0.4em;

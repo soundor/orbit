@@ -44,6 +44,7 @@
         "../plugin/package.json"
       ],
       "outputs": ["dist/**"],
+      "env": ["UMAMI_WEBSITE_ID"],
       // The build screenshots the web build in Chromium.
       "passThroughEnv": ["PLAYWRIGHT_BROWSERS_PATH"]
     },

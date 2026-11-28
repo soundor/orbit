@@ -4,10 +4,12 @@ import react from '@vitejs/plugin-react';
 import { fumadocsMdx } from 'fumadocs-mdx/vite';
 import { defineConfig } from 'vite';
 
+import { analytics } from './scripts/analytics.ts';
 import { serveFile } from './scripts/static.ts';
 
 export default defineConfig({
   plugins: [
+    analytics(),
     {
       // public/embed/, which scripts/sync-embed.ts writes, served from disk
       // under `vite dev`: Vite's list of public files goes stale when it is

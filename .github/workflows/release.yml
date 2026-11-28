@@ -126,6 +126,9 @@ jobs:
         uses: ./.github/actions/vst3
         with:
           platform: ${{ matrix.platform }}
+      - uses: ./.github/actions/pluginval
+        with:
+          plugin: apps/plugin/.soundor/dist/vst3/Soundor Orbit.vst3
       - if: runner.os == 'Linux'
         run: sudo apt-get install -y --no-install-recommends xvfb
       - if: runner.os == 'Linux'

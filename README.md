@@ -107,7 +107,7 @@ pull request open with the next version in `apps/plugin/package.json`
 (which `soundor.config.ts` reports to hosts) and `apps/plugin/CHANGELOG.md`,
 from the commits that touch `apps/plugin`. Merging it tags the
 release and runs `.github/workflows/release.yml`: the checks, the VST3 built
-on Linux and Windows, the zips, `SHA256SUMS` and their provenance uploaded to
+on Linux and Windows and validated by pluginval, the zips, `SHA256SUMS` and their provenance uploaded to
 the draft release, which is then published, and the website deployed. A run
 that stopped before publishing finishes from Actions → Release → Run workflow,
 with the draft's tag.

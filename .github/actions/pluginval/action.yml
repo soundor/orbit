@@ -1,0 +1,41 @@
+name: pluginval
+description: >
+  Validate a VST3 with Tracktion's pluginval at its strictest level, editor
+  included (under Xvfb on Linux); a failure fails the job. pluginval is
+  pinned and checked by SHA-256, and runs only here: it is never part of the
+  plugin or its build.
+
+inputs:
+  plugin:
+    description: The .vst3 bundle's path
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        PLUGIN: ${{ inputs.plugin }}
+        PLUGINVAL_VERSION: v1.0.4
+        PLUGINVAL_LINUX_SHA256: c01c49d8063965c4c2dea8324468336768f5c9139e0b1caebde14c2400b55352
+        PLUGINVAL_WINDOWS_SHA256: c08e61ce3b96db41636f8ec7e76f4c7e2c13ebdac7fa1b5a1f52b4f32ec715ab
+      run: |
+        set -euo pipefail
+        dir="$RUNNER_TEMP/pluginval"
+        mkdir -p "$dir"
+        case "$RUNNER_OS" in
+          Linux) archive=pluginval_Linux.zip sha=$PLUGINVAL_LINUX_SHA256 exe="$dir/pluginval" ;;
+          Windows) archive=pluginval_Windows.zip sha=$PLUGINVAL_WINDOWS_SHA256 exe="$dir/pluginval.exe" ;;
+          *) echo "::error title=pluginval::No pinned pluginval for $RUNNER_OS."; exit 1 ;;
+        esac
+        curl -fsSL -o "$dir/pluginval.zip" "https://github.com/Tracktion/pluginval/releases/download/$PLUGINVAL_VERSION/$archive"
+        echo "$sha  $dir/pluginval.zip" | sha256sum --check
+        args=(--strictness-level 10 --validate-in-process --validate "$PLUGIN")
+        if [[ "$RUNNER_OS" == Windows ]]; then
+          7z x -y -bd "-o$dir" "$dir/pluginval.zip" > /dev/null
+          "$exe" "${args[@]}"
+        else
+          unzip -q "$dir/pluginval.zip" -d "$dir"
+          sudo apt-get install -y --no-install-recommends xvfb > /dev/null
+          xvfb-run -a -s "-screen 0 1280x1024x24" "$exe" "${args[@]}"
+        fi

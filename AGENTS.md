@@ -18,7 +18,7 @@ web build itself, which the landing page and the Soundor websites put in an
 iframe. Embedding is not a public feature: don't document or advertise it.
 Soundor's own docs are at
 https://soundor.dev/docs; the UI uses `@soundor/components` and
-`@soundor/icons`.
+`@soundor/icons`. Umami's tracker is in the pages only when the build has `UMAMI_WEBSITE_ID`, the organization's Actions variable (never hardcoded or copied into the repository), which `website.yml` passes and requires; `vite dev`, local and pull-request builds have none (`scripts/analytics.ts`, `src/components/analytics.tsx`, which also names the site's hostname).
 
 ## Commands
 

@@ -45,7 +45,18 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: read
+    env:
+      UMAMI_WEBSITE_ID: ${{ vars.UMAMI_WEBSITE_ID }}
     steps:
+      # The site carries Umami's tracker only when the build has a website
+      # ID: the organization's UMAMI_WEBSITE_ID variable. Without it a deploy
+      # would publish the site without analytics, so it stops here.
+      - name: Check the analytics configuration
+        run: |
+          if [ -z "$UMAMI_WEBSITE_ID" ]; then
+            echo "::error title=UMAMI_WEBSITE_ID is missing::The organization's Actions variable UMAMI_WEBSITE_ID is not set, or not visible to this repository (Organization settings → Secrets and variables → Actions → Variables). The website is not deployed without it."
+            exit 1
+          fi
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ inputs.ref }}
@@ -59,6 +70,12 @@ jobs:
           key: playwright-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
       - run: pnpm --filter orbit-website exec playwright install --with-deps chromium
       - run: pnpm turbo run build --filter=orbit-website
+      - name: Check the tracker is in the site
+        run: |
+          if ! grep -q "data-website-id=\"$UMAMI_WEBSITE_ID\"" apps/website/dist/client/index.html; then
+            echo "::error title=No analytics tracker::apps/website/dist/client/index.html has no tracker with UMAMI_WEBSITE_ID's website ID."
+            exit 1
+          fi
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: apps/website/dist/client

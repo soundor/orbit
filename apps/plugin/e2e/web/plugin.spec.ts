@@ -21,7 +21,8 @@ test('a preset sets the controls, and releases Hold', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Next preset' }).click();
 
-  await expect(page.getByText('Warm magnetic')).toBeVisible();
+  // The web host's toolbar lists the presets too: read the plugin's own.
+  await expect(page.getByRole('main').getByText('Warm magnetic')).toBeVisible();
   await expect(page.getByText('FREE')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Hold' })).toHaveAttribute(
     'aria-pressed',

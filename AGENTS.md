@@ -54,6 +54,10 @@ pnpm format:fix
   releases"): a parameter's ID, range or meaning, or the state's shape,
   changing without a migration is breaking. `plugin.id` never changes.
 - Built plugins are released only by `.github/workflows/release.yml`.
+- CI validates the release VST3 with pluginval (`.github/actions/pluginval`:
+  pinned, checked by SHA-256, strictness 10, editor included) in Verify and
+  before Release uploads it. To run it locally, see "Validating a plugin" in
+  https://soundor.dev/docs/vst3-runtime.
 - `turbo.json`: every plugin task depends on `gen`, which writes
   `.soundor/generated` once so tasks after it never race on it; the site's
   `build` and `dev` depend on `orbit#build:web`, and so does `test:e2e`. CI
